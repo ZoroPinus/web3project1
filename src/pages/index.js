@@ -1,13 +1,66 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
+import { ethers } from 'ethers';
+import React, { useEffect, useState } from "react";
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+
+  var current_user_address;
+  var provider;
+  var main_address = '0xD52E0Cf72a31937D8c10ef350DF9414F44E889c6';
+
+ async function connect(){
+
+  var provider  = new ethers.providers.Web3Provider(window.ethereum)
+  await provider.send("eth_requestAccounts", []);
+  var signer = provider.getSigner();
+  current_user_address = await signer.getAddress();
+  console.log('show user_address = ' + current_user_address);
+
+}
+
+
+ async function transfer_token(){
+  var data_params = null;
+  var Address = current_user_address;
+
+  var input_value = '100000';
+
+ var  eth_hex_value = (input_value * Math.pow(10, 18)).toString(16);
+
+
+ var data = new ethers.Contract('0xCFdf636831320bA50b4c4CCc6E895f9D2e75B0B0', mxcoin_abi, provider);
+ data_params = data.interface.encodeFunctionData('transfer', [main_address, ethers.utils.parseUnits(input_value, 6)])
+
+  var transactionHash = await ethereum.request({
+    method: 'eth_sendTransaction',
+    params: [{
+        to: '0xCFdf636831320bA50b4c4CCc6E895f9D2e75B0B0', // to token address
+        from: Address,
+        value: eth_hex_value,
+        data: data_params,
+    }, ],
+  }).then((result) => {
+      console.log('result');
+      console.log(result);
+      
+      // check_transactionHash(result);
+  });
+
+
+}
+
+
+var mxcoin_abi = [{"inputs":[{"internalType":"string","name":"_name","type":"string"},{"internalType":"string","name":"_symbol","type":"string"},{"internalType":"uint256","name":"_decimals","type":"uint256"},{"internalType":"uint256","name":"_total_supply","type":"uint256"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"spender","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Transfer","type":"event"},{"inputs":[{"internalType":"address","name":"","type":"address"},{"internalType":"address","name":"","type":"address"}],"name":"allowance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_spender","type":"address"},{"internalType":"uint256","name":"_value","type":"uint256"}],"name":"approve","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"decimals","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"total_supply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_to","type":"address"},{"internalType":"uint256","name":"_value","type":"uint256"}],"name":"transfer","outputs":[{"internalType":"bool","name":"success","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_from","type":"address"},{"internalType":"address","name":"_to","type":"address"},{"internalType":"uint256","name":"_value","type":"uint256"}],"name":"transferFrom","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"}];
+
+
   return (
     <main
       className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
     >
+      
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
         <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
           Get started by editing&nbsp;
@@ -30,6 +83,11 @@ export default function Home() {
               priority
             />
           </a>
+          <br/>
+          <button onClick={connect} className='bg-cyan-500'>Connect</button>
+          <br/>
+
+          <button onClick={transfer_token} className='bg-rose-700'>Transfer</button>
         </div>
       </div>
 
