@@ -1,5 +1,8 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import Trending from "../components/Trending.js";
 import nftImg from "../../public/images/nft-landing.jpg";
 import profile1 from "../../public/images/profile_1.jpg";
 import profile2 from "../../public/images/profile_2.jpg";
@@ -10,10 +13,26 @@ import profile5 from "../../public/images/profile_5.jpg";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const [animateHeader, setAnimateHeader] = useState(false);
+  useEffect(() => {
+    const listener = () => {
+      if (window.scrollY > 140) {
+        setAnimateHeader(true);
+      } else setAnimateHeader(false);
+    };
+    window.addEventListener("scroll", listener);
+    return () => {
+      window.removeEventListener("scroll", listener);
+    };
+  }, []);
   return (
     <>
-      <div className="w-full px-10 fixed top-0 z-40">
-        <nav className="p-8">
+      <header
+        className={`w-full px-10 fixed top-0 z-40 ${
+          animateHeader && " bg-[#1a1a56]"
+        }`}
+      >
+        <nav className="py-5 px-8">
           <div className="container mx-auto flex justify-between items-center">
             <div className="flex items-center">
               <div className="blinc-logo uppercase font-bold text-4xl text-slate-50 mr-16">
@@ -36,7 +55,8 @@ export default function Home() {
             </a>
           </div>
         </nav>
-      </div>
+      </header>
+
       <main
         className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
       >
@@ -115,7 +135,6 @@ export default function Home() {
             </div>
           </div>
         </div>
-
         <div className="trending-content py-20">
           <div className="flex justify-between items-center mb-8">
             <h3 className="text-2xl md:text-4xl text-slate-50  font-semibold">
@@ -129,7 +148,6 @@ export default function Home() {
                 <svg
                   className=" h-8 w-8"
                   xmlns="http://www.w3.org/2000/svg"
-                  class="ionicon"
                   viewBox="0 0 512 512"
                 >
                   <path d="M104 496H72a24 24 0 01-24-24V328a24 24 0 0124-24h32a24 24 0 0124 24v144a24 24 0 01-24 24zM328 496h-32a24 24 0 01-24-24V232a24 24 0 0124-24h32a24 24 0 0124 24v240a24 24 0 01-24 24zM440 496h-32a24 24 0 01-24-24V120a24 24 0 0124-24h32a24 24 0 0124 24v352a24 24 0 01-24 24zM216 496h-32a24 24 0 01-24-24V40a24 24 0 0124-24h32a24 24 0 0124 24v432a24 24 0 01-24 24z" />
@@ -137,80 +155,7 @@ export default function Home() {
               </span>
             </a>
           </div>
-          <div className="grid lg:grid-cols-3 grid-cols-1 gap-10">
-            <div className="flex flex-col justify-center items-center w-full overflow-hidden pb-4 bg-indigo-950 border-2 border-indigo-500 rounded-lg">
-              <Image
-                src={profile1}
-                alt="profile-user-1"
-                className="w-full mb-6"
-              />
-              <span className="text-lg font-medium text-slate-50 mb-1">
-                Arthur James
-              </span>
-              <p className="text-sm text-slate-50 opacity-50">Dancer/Singer</p>
-            </div>
-            <div className="flex flex-col justify-center items-center w-full overflow-hidden pb-4 bg-indigo-950 border-2 border-indigo-500 rounded-lg">
-              <Image
-                src={profile2}
-                alt="profile-user-1"
-                className="w-full mb-6"
-              />
-              <span className="text-lg font-medium text-slate-50 mb-1">
-                Arthur James
-              </span>
-              <p className="text-sm text-slate-50 opacity-50">Dancer/Singer</p>
-            </div>
-            <div className="flex flex-col justify-center items-center w-full overflow-hidden pb-4 bg-indigo-950 border-2 border-indigo-500 rounded-lg">
-              <Image
-                src={profile3}
-                alt="profile-user-1"
-                className="w-full mb-6"
-              />
-              <span className="text-lg font-medium text-slate-50 mb-1">
-                Arthur James
-              </span>
-              <p className="text-sm text-slate-50 opacity-50">Dancer/Singer</p>
-            </div>
-            <div className="flex flex-col items-center w-full overflow-hidden pb-4 bg-indigo-950 border-2 border-indigo-500 rounded-lg ">
-              <Image
-                src={profile4}
-                alt="profile-user-1"
-                className="w-full mb-6"
-              />
-              <div className="flex w-full justify-between items-center px-5 pb-5 border-b-2 border-indigo-800">
-                <p className="text-lg font-medium text-slate-50 mb-1">
-                  Arthur James
-                </p>
-                <a className="py-1 px-4 inline-flex justify-center items-center bg-indigo-700 rounded hover:bg-indigo-800 cursor-pointer">
-                  <span className="text-base text-slate-50 font-medium ">
-                    Vote
-                  </span>
-                </a>
-              </div>
-              <div className="flex w-full justify-between items-center px-5  pt-5 opacity-40">
-                <p className="text-sm text-slate-50 font-medium">
-                  Total Votes
-                </p>
-                <div className="text-sm text-slate-50 font-medium flex">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="fill-slate-50" viewBox="0 0 512 512"><path d="M394.23 197.56a300.43 300.43 0 00-53.37-90C301.2 61.65 249.05 32 208 32a16 16 0 00-15.48 20c13.87 53-14.88 97.07-45.31 143.72C122 234.36 96 274.27 96 320c0 88.22 71.78 160 160 160s160-71.78 160-160c0-43.3-7.32-84.49-21.77-122.44zm-105.9 221.13C278 429.69 265.05 432 256 432s-22-2.31-32.33-13.31S208 390.24 208 368c0-25.14 8.82-44.28 17.34-62.78 4.95-10.74 10-21.67 13-33.37a8 8 0 0112.49-4.51A126.48 126.48 0 01275 292c18.17 24 29 52.42 29 76 0 22.24-5.42 39.77-15.67 50.69z"/></svg>
-                  <span>
-                    1.1k
-                  </span> 
-                </div>
-              </div>
-            </div>
-            <div className="flex flex-col justify-center items-center w-full overflow-hidden pb-4 bg-indigo-950 border-2 border-indigo-500 rounded-lg">
-              <Image
-                src={profile4}
-                alt="profile-user-1"
-                className="w-full mb-6"
-              />
-              <span className="text-lg font-medium text-slate-50 mb-1">
-                Arthur James
-              </span>
-              <p className="text-sm text-slate-50 opacity-50">Dancer/Singer</p>
-            </div>
-          </div>
+          <Trending />
         </div>
 
         <div className="call-to-action py-20">

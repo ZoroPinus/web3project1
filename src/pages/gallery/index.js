@@ -1,12 +1,11 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
-
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
+export default function Gallery() {
   return (
     <>
-      <div className="w-full px-10 fixed top-0">
+      <header className="w-full px-10 fixed top-0 z-40">
         <nav className="p-8">
           <div className="container mx-auto flex justify-between items-center">
             <div className="flex items-center">
@@ -24,13 +23,13 @@ export default function Home() {
             </div>
             <a
               href="#"
-              className="inline-flex cursor-pointer justify-center items-center px-4 py-3 rounded-lg bg-indigo-700 hover:bg-indigo-800 text-slate-50 font-semibold text-md sm:text-base"
+              className="flex justify-center items-center px-4 py-3 rounded-lg bg-indigo-700 hover:bg-indigo-800 text-slate-50 font-semibold text-md sm:text-base"
             >
               <span>Connect wallet</span>
             </a>
           </div>
         </nav>
-      </div>
+      </header>
       <main
         className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className} scroll-smooth`}
       >
