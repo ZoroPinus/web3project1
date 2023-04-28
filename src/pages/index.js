@@ -1,272 +1,16 @@
-<<<<<<< Updated upstream
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import { ethers } from 'ethers';
-=======
-import Image from "next/image";
-import { Inter } from "next/font/google";
-import nftImg from "../../public/images/nft-landing.jpg";
-import profile1 from "../../public/images/profile_1.jpg";
-import profile2 from "../../public/images/profile_2.jpg";
-import profile3 from "../../public/images/profile_3.jpg";
-import profile4 from "../../public/images/profile_4.jpg";
-import profile5 from "../../public/images/profile_5.jpg";
-import { ethers } from "ethers";
->>>>>>> Stashed changes
 import React, { useEffect, useState } from "react";
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
-<<<<<<< Updated upstream
-=======
-  var current_user_address;
-  var provider;
-  //Recipient wallet 
-  var main_address = "0xD52E0Cf72a31937D8c10ef350DF9414F44E889c6";
-
-  async function connect() {
-    var provider = new ethers.providers.Web3Provider(window.ethereum);
-    await provider.send("eth_requestAccounts", []);
-    var signer = provider.getSigner();
-    current_user_address = await signer.getAddress();
-    console.log("show user_address = " + current_user_address);
-  }
-
-  async function transfer_token() {
-    var data_params = null;
-    var Address = current_user_address;
-
-    var input_value = "100000";
-
-    var eth_hex_value = (input_value * Math.pow(10, 18)).toString(16);
-
-    var data = new ethers.Contract(
-      "0xCFdf636831320bA50b4c4CCc6E895f9D2e75B0B0",
-      mxcoin_abi,
-      provider
-    );
-    data_params = data.interface.encodeFunctionData("transfer", [
-      main_address,
-      ethers.utils.parseUnits(input_value, 6),
-    ]);
-
-    var transactionHash = await ethereum
-      .request({
-        method: "eth_sendTransaction",
-        params: [
-          {
-            to: "0xCFdf636831320bA50b4c4CCc6E895f9D2e75B0B0", // to token address
-            from: Address,
-            value: eth_hex_value,
-            data: data_params,
-          },
-        ],
-      })
-      .then((result) => {
-        console.log("result");
-        console.log(result);
-
-        // check_transactionHash(result);
-      });
-  }
-
-  var mxcoin_abi = [
-    {
-      inputs: [
-        { internalType: "string", name: "_name", type: "string" },
-        { internalType: "string", name: "_symbol", type: "string" },
-        { internalType: "uint256", name: "_decimals", type: "uint256" },
-        { internalType: "uint256", name: "_total_supply", type: "uint256" },
-      ],
-      stateMutability: "nonpayable",
-      type: "constructor",
-    },
-    {
-      anonymous: false,
-      inputs: [
-        {
-          indexed: true,
-          internalType: "address",
-          name: "owner",
-          type: "address",
-        },
-        {
-          indexed: true,
-          internalType: "address",
-          name: "spender",
-          type: "address",
-        },
-        {
-          indexed: false,
-          internalType: "uint256",
-          name: "value",
-          type: "uint256",
-        },
-      ],
-      name: "Approval",
-      type: "event",
-    },
-    {
-      anonymous: false,
-      inputs: [
-        {
-          indexed: true,
-          internalType: "address",
-          name: "from",
-          type: "address",
-        },
-        { indexed: true, internalType: "address", name: "to", type: "address" },
-        {
-          indexed: false,
-          internalType: "uint256",
-          name: "value",
-          type: "uint256",
-        },
-      ],
-      name: "Transfer",
-      type: "event",
-    },
-    {
-      inputs: [
-        { internalType: "address", name: "", type: "address" },
-        { internalType: "address", name: "", type: "address" },
-      ],
-      name: "allowance",
-      outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
-      stateMutability: "view",
-      type: "function",
-    },
-    {
-      inputs: [
-        { internalType: "address", name: "_spender", type: "address" },
-        { internalType: "uint256", name: "_value", type: "uint256" },
-      ],
-      name: "approve",
-      outputs: [{ internalType: "bool", name: "", type: "bool" }],
-      stateMutability: "nonpayable",
-      type: "function",
-    },
-    {
-      inputs: [{ internalType: "address", name: "", type: "address" }],
-      name: "balanceOf",
-      outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
-      stateMutability: "view",
-      type: "function",
-    },
-    {
-      inputs: [],
-      name: "decimals",
-      outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
-      stateMutability: "view",
-      type: "function",
-    },
-    {
-      inputs: [],
-      name: "name",
-      outputs: [{ internalType: "string", name: "", type: "string" }],
-      stateMutability: "view",
-      type: "function",
-    },
-    {
-      inputs: [],
-      name: "symbol",
-      outputs: [{ internalType: "string", name: "", type: "string" }],
-      stateMutability: "view",
-      type: "function",
-    },
-    {
-      inputs: [],
-      name: "total_supply",
-      outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
-      stateMutability: "view",
-      type: "function",
-    },
-    {
-      inputs: [
-        { internalType: "address", name: "_to", type: "address" },
-        { internalType: "uint256", name: "_value", type: "uint256" },
-      ],
-      name: "transfer",
-      outputs: [{ internalType: "bool", name: "success", type: "bool" }],
-      stateMutability: "nonpayable",
-      type: "function",
-    },
-    {
-      inputs: [
-        { internalType: "address", name: "_from", type: "address" },
-        { internalType: "address", name: "_to", type: "address" },
-        { internalType: "uint256", name: "_value", type: "uint256" },
-      ],
-      name: "transferFrom",
-      outputs: [{ internalType: "bool", name: "", type: "bool" }],
-      stateMutability: "nonpayable",
-      type: "function",
-    },
-  ];
-
-  return (
-    <>
-      <div className="w-full px-10 fixed top-0 z-40">
-        <nav className="p-8">
-          <div className="container mx-auto flex justify-between items-center">
-            <div className="flex items-center">
-              <div className="blinc-logo uppercase font-bold text-4xl text-slate-50 mr-16">
-                BLINC
-              </div>
-              <ul className="nav-links flex gap-6">
-                <li className="text-md sm:text-base text-slate-50 hover:text-indigo-500">
-                  <a href="#">Home</a>
-                </li>
-                <li className="text-md sm:text-base text-slate-50 hover:text-indigo-500">
-                  <a href="gallery/">Gallery</a>
-                </li>
-              </ul>
-            </div>
-            <a
-              href="#"
-              className="flex justify-center items-center px-4 py-3 rounded-lg bg-indigo-700 hover:bg-indigo-800 text-slate-50 font-semibold text-md sm:text-base"
-              onClick={connect}
-            >
-              <span>Connect wallet</span>
-            </a>
-          </div>
-        </nav>
-      </div>
-      <main
-        className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-      >
-        <div className="container mx-auto py-32">
-          <div className="grid grid-cols-1 md:grid-cols-2 items-center">
-            <div>
-              <h2 className="md:text-6xl text-4xl font-bold text-indigo-500 mb-7">
-                #1 NFT Entertainment Platform in the Philippines
-              </h2>
-              <p className="text-base sm:text-lg md:text-2xl font-medium text-slate-50 mb-5">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Adipisci officia, velit esse ab in totam dolores dolorem
-                debitis, aliquam illo nihil vero laboriosam.
-              </p>
-              <a
-                href="#"
-                className="inline-flex cursor-pointer justify-center items-center px-4 py-3 rounded-lg border border-indigo-700 hover:bg-indigo-800 text-slate-50 font-semibold text-md sm:text-base"
-                onClick={connect}
-              >
-                <span>Connect wallet</span>
-              </a>
-            </div>
-            <div className="flex justify-center items-center">
-              <Image src={nftImg} alt="" className="w-[80%] rounded-2xl" />
-            </div>
-          </div>
-        </div>
->>>>>>> Stashed changes
 
   var current_user_address;
   var provider;
   var main_address = '0xD52E0Cf72a31937D8c10ef350DF9414F44E889c6';
 
-<<<<<<< Updated upstream
  async function connect(){
 
   var provider  = new ethers.providers.Web3Provider(window.ethereum)
@@ -274,7 +18,7 @@ export default function Home() {
   var signer = provider.getSigner();
   current_user_address = await signer.getAddress();
   console.log('show user_address = ' + current_user_address);
-=======
+
         <div className="trending-content py-20">
           <div className="flex justify-between items-center mb-8">
             <h3 className="text-2xl md:text-4xl text-slate-50  font-semibold">
@@ -373,8 +117,6 @@ export default function Home() {
             </div>
           </div>
         </div>
->>>>>>> Stashed changes
-
 }
 
 
