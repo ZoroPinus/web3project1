@@ -28,10 +28,10 @@ export default function Home() {
   return (
     <>
       <header
-        className={`w-full px-10 fixed top-0 z-40 ${
+        className={`w-full px-10 fixed top-0 z-40 scroll-smooth ${
           animateHeader && " bg-[#1a1a56]"
-        }`}
-      >
+        }`} >
+        
         <nav className="py-5 px-8">
           <div className="container mx-auto flex justify-between items-center">
             <div className="flex items-center">
@@ -40,7 +40,7 @@ export default function Home() {
               </div>
               <ul className="nav-links flex gap-6">
                 <li className="text-md sm:text-base text-slate-50 hover:text-indigo-500">
-                  <a href="#">Home</a>
+                  <a href="#hero">Home</a>
                 </li>
                 <li className="text-md sm:text-base text-slate-50 hover:text-indigo-500">
                   <a href="gallery/">Gallery</a>
@@ -58,9 +58,9 @@ export default function Home() {
       </header>
 
       <main
-        className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
+        className={`flex min-h-screen flex-col items-center justify-between p-24 scroll-smooth ${inter.className}`}
       >
-        <div className="container mx-auto py-32">
+        <div className="container mx-auto py-32" id="hero">
           <div className="grid grid-cols-1 md:grid-cols-2 items-center">
             <div>
               <h2 className="md:text-6xl text-4xl font-bold text-indigo-500 mb-7">
@@ -135,6 +135,7 @@ export default function Home() {
             </div>
           </div>
         </div>
+
         <div className="trending-content py-20">
           <div className="flex justify-between items-center mb-8">
             <h3 className="text-2xl md:text-4xl text-slate-50  font-semibold">
