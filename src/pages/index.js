@@ -5,6 +5,23 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return (
+    <>
+    <head>
+        <nav class="p-8">
+            <div class="container mx-auto flex justfiy-between items-center">
+                <div class="flex gap-5 items-center">
+                    <div class="blinc-logo"></div>
+                    <div class="nav-links flex gap-4">
+                        <ul>
+                            <li class="text-md sm:text-base">Home</li>
+                            <li class="text-md sm:text-base">Gallery</li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="#" class="flex justify-center items-center p-5 bg-indigo-700 text-slate-50 font-semibold text-md sm:text-base"><span>Connect wallet</span></a>
+            </div>
+        </nav>
+    </head>
     <main
       className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
     >
@@ -114,5 +131,6 @@ export default function Home() {
         </a>
       </div>
     </main>
+    </>
   )
 }
