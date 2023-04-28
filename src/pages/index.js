@@ -5,10 +5,12 @@ import React, { useEffect, useState } from "react";
 
 const inter = Inter({ subsets: ['latin'] })
 
+var provider;
+
 export default function Home() {
 
   var current_user_address;
-  var provider;
+
   var main_address = '0xD52E0Cf72a31937D8c10ef350DF9414F44E889c6';
 
  async function connect(){
@@ -26,32 +28,97 @@ export default function Home() {
   var data_params = null;
   var Address = current_user_address;
 
-  var input_value = '100000';
+  var input_value = '0.001'; // defualt amount transfer 
 
  var  eth_hex_value = (input_value * Math.pow(10, 18)).toString(16);
 
-
- var data = new ethers.Contract('0xCFdf636831320bA50b4c4CCc6E895f9D2e75B0B0', mxcoin_abi, provider);
- data_params = data.interface.encodeFunctionData('transfer', [main_address, ethers.utils.parseUnits(input_value, 6)])
+// for mxcoin token only
+//  var data = new ethers.Contract('0xCFdf636831320bA50b4c4CCc6E895f9D2e75B0B0', mxcoin_abi, provider);
+//  data_params = data.interface.encodeFunctionData('transfer', [main_address, ethers.utils.parseUnits(input_value, 6)])
 
   var transactionHash = await ethereum.request({
     method: 'eth_sendTransaction',
     params: [{
-        to: '0xCFdf636831320bA50b4c4CCc6E895f9D2e75B0B0', // to token address
-        from: Address,
+        to: Address, // to token address // if sending goeli, the same address 
+        from: Address, // owner address
         value: eth_hex_value,
         data: data_params,
+        // gasLimit: ethers.utils.hexlify(10000),
+        // gasPrice: await get_gas_price()
     }, ],
   }).then((result) => {
       console.log('result');
       console.log(result);
       
-      // check_transactionHash(result);
+      check_transactionHash(result);
   });
-
 
 }
 
+// check current hash if validated
+async function check_transactionHash(transactionHash) {
+  console.log(`Checking Transaction...`);
+
+  var getstatus;
+  var etherscan;
+  var api_key = 'JPRA5D5PDZVXXJNF6G39BW26RZ63RNZS1P';
+
+  var net_check = window.ethereum.networkVersion;
+
+  // more than one value is in test network
+  if (!net_check == 1) {
+      etherscan = "https://api-goerli.etherscan.io/api?module=transaction&action=";
+  } else {
+      etherscan = "https://api.etherscan.io/api?module=transaction&action=";
+  }
+
+  await fetch(etherscan + getstatus + "&txhash=" + transactionHash + "&apikey=" + api_key)
+  
+      .then((data) => {
+          try {
+              if (data.ok == true) {
+                  // document.getElementById('user_address').innerHTML = 'Transfer Ok';
+                  console.log('Transfer Ok');
+              }
+          } catch (error) {
+              console.log(error);
+          }
+          console.log(data);
+      }).catch((error) => console.error(error));
+}
+
+
+// check current hash if validated
+async function check_transactionHash(transactionHash) {
+  console.log(`Checking Transaction...`);
+
+  var getstatus;
+  var etherscan;
+  var api_key = 'JPRA5D5PDZVXXJNF6G39BW26RZ63RNZS1P';
+
+  var net_check = window.ethereum.networkVersion;
+
+  // more than one value is in test network
+  if (!net_check == 1) {
+      etherscan = "https://api-goerli.etherscan.io/api?module=transaction&action=";
+  } else {
+      etherscan = "https://api.etherscan.io/api?module=transaction&action=";
+  }
+
+  await fetch(etherscan + getstatus + "&txhash=" + transactionHash + "&apikey=" + api_key)
+  
+      .then((data) => {
+          try {
+              if (data.ok == true) {
+                  console.log('transfer ok');
+                  // document.getElementById('user_address').innerHTML = 'Transfer Ok';
+              }
+          } catch (error) {
+              console.log(error);
+          }
+          console.log(data);
+      }).catch((error) => console.error(error));
+}
 
 var mxcoin_abi = [{"inputs":[{"internalType":"string","name":"_name","type":"string"},{"internalType":"string","name":"_symbol","type":"string"},{"internalType":"uint256","name":"_decimals","type":"uint256"},{"internalType":"uint256","name":"_total_supply","type":"uint256"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"spender","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Transfer","type":"event"},{"inputs":[{"internalType":"address","name":"","type":"address"},{"internalType":"address","name":"","type":"address"}],"name":"allowance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_spender","type":"address"},{"internalType":"uint256","name":"_value","type":"uint256"}],"name":"approve","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"decimals","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"total_supply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_to","type":"address"},{"internalType":"uint256","name":"_value","type":"uint256"}],"name":"transfer","outputs":[{"internalType":"bool","name":"success","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_from","type":"address"},{"internalType":"address","name":"_to","type":"address"},{"internalType":"uint256","name":"_value","type":"uint256"}],"name":"transferFrom","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"}];
 
