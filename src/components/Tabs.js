@@ -17,10 +17,10 @@ const Tabs = () => {
             <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
               <a
                 className={
-                  "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
+                  "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal relative " +
                   (openTab === 1
-                    ? "text-white border-b border-indigo-600"
-                    : "text-blueGray-600 bg-white")
+                    ? "text-white after:w-1/2 after:h-[3px] after:rounded after:absolute after:-bottom-2 after:mx-auto after:right-0 after:left-0 after:bg-indigo-600"
+                    : "text-slate-50 ")
                 }
                 onClick={(e) => {
                   e.preventDefault();
@@ -36,10 +36,10 @@ const Tabs = () => {
             <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
               <a
                 className={
-                  "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
+                  "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal relative " +
                   (openTab === 2
-                    ? "text-white bg-indigo-600"
-                    : "text-blueGray-600 bg-white")
+                    ? "text-white after:w-1/2 after:h-[3px] after:rounded after:absolute after:-bottom-2 after:mx-auto after:right-0 after:left-0 after:bg-indigo-600"
+                    : "text-slate-50 ")
                 }
                 onClick={(e) => {
                   e.preventDefault();
@@ -55,10 +55,10 @@ const Tabs = () => {
             <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
               <a
                 className={
-                  "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
+                  "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal relative " +
                   (openTab === 3
-                    ? "text-white bg-indigo-600"
-                    : "text-blueGray-600 bg-white")
+                    ? "text-white after:w-1/2 after:h-[3px] after:rounded after:absolute after:-bottom-2 after:mx-auto after:right-0 after:left-0 after:bg-indigo-600"
+                    : "text-slate-50 ")
                 }
                 onClick={(e) => {
                   e.preventDefault();

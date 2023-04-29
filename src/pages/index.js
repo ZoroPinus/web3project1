@@ -166,7 +166,7 @@ export default function Home() {
         <div className="explore-events">
           <div className="container mx-auto">
             <h3 className="text-2xl md:text-4xl text-slate-50  font-semibold mb-8">
-              Explore trending events
+              Explore trending Reality TV Shows
             </h3>
             <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-10">
               <div className="relative rounded-md overflow-hidden ">
