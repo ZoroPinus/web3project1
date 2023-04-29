@@ -1,25 +1,153 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
-import { ethers } from 'ethers';
-import React, { useEffect, useState } from "react";
-
+import { useState, useEffect } from "react";
+import Trending from "../components/Trending.js";
+import nftImg from "../../public/images/nft-landing.jpg";
+import profile1 from "../../public/images/profile_1.jpg";
+import profile2 from "../../public/images/profile_2.jpg";
+import profile3 from "../../public/images/profile_3.jpg";
+import profile4 from "../../public/images/profile_4.jpg";
+import {ethers} from 'ethers';
 const inter = Inter({ subsets: ['latin'] })
-
-var provider;
-
+1
 export default function Home() {
+  const [animateHeader, setAnimateHeader] = useState(false);
+  const [walletStat, setWalletStat] = useState(false);
+  useEffect(() => {
+    const listener = () => {
+      if (window.scrollY > 140) {
+        setAnimateHeader(true);
+      } else setAnimateHeader(false);
+    };
+    window.addEventListener("scroll", listener);
+    return () => {
+      window.removeEventListener("scroll", listener);
+    };
+  }, []);
 
-  var current_user_address;
-
-  var main_address = '0xD52E0Cf72a31937D8c10ef350DF9414F44E889c6';
+  
+  
 
  async function connect(){
-
   var provider  = new ethers.providers.Web3Provider(window.ethereum)
   await provider.send("eth_requestAccounts", []);
   var signer = provider.getSigner();
   current_user_address = await signer.getAddress();
-  console.log('show user_address = ' + current_user_address);
+  setWalletStat(true);
+}
+
+
+  return (
+    <>
+      <header
+        className={`w-full px-10 fixed top-0 z-40 scroll-smooth ${
+          animateHeader && " bg-[#1a1a56]"
+        }`} >
+        
+        <nav className="py-5 px-8">
+          <div className="container mx-auto flex justify-between items-center">
+            <div className="flex items-center">
+              <div className="blinc-logo uppercase font-bold text-4xl text-slate-50 mr-16">
+                BLINC
+              </div>
+              <ul className="nav-links flex gap-6">
+                <li className="text-md sm:text-base text-slate-50 hover:text-indigo-500">
+                  <a href="#hero">Home</a>
+                </li>
+                <li className="text-md sm:text-base text-slate-50 hover:text-indigo-500">
+                  <a href="gallery/">Gallery</a>
+                </li>
+              </ul>
+            </div>
+            <a
+              href="#"
+              className="flex justify-center items-center px-4 py-3 rounded-lg bg-indigo-700 hover:bg-indigo-800 text-slate-50 font-semibold text-md sm:text-base"
+              onClick={connect} 
+            >
+              <span>Connect wallet</span>
+            </a>
+          </div>
+        </nav>
+      </header>
+
+      <main
+        className={`flex min-h-screen flex-col items-center justify-between p-24 scroll-smooth ${inter.className}`}
+      >
+        <div className="container mx-auto py-32" id="hero">
+          <div className="grid grid-cols-1 md:grid-cols-2 items-center">
+            <div>
+              <h2 className="md:text-6xl text-4xl font-bold text-indigo-500 mb-7">
+                #1 NFT Entertainment Platform in the Philippines
+              </h2>
+              <p className="text-base sm:text-lg md:text-2xl font-medium text-slate-50 mb-5">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Adipisci officia, velit esse ab in totam dolores dolorem
+                debitis, aliquam illo nihil vero laboriosam.
+              </p>
+              <a
+                href="#"
+                className="inline-flex cursor-pointer justify-center items-center px-4 py-3 rounded-lg border border-indigo-700 hover:bg-indigo-800 text-slate-50 font-semibold text-md sm:text-base"
+              >
+                <span>Connect wallet</span>
+              </a>
+            </div>
+            <div className="flex justify-center items-center">
+              <Image src={nftImg} alt="" className="w-[80%] rounded-2xl" />
+            </div>
+          </div>
+        </div>
+
+        <div className="top-creators py-20">
+          <h3 className="text-2xl md:text-4xl text-slate-50 mb-8 font-semibold">
+            Top Creators
+          </h3>
+          <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-10 relative after:absolute after:flex after:justify-center after:items-center after:top-0 after:left-0">
+            <div className="flex flex-col justify-center items-center w-full py-10 px-6 bg-indigo-950 border-2 border-indigo-500 rounded-lg">
+              <Image
+                src={profile1}
+                alt="profile-user-1"
+                className="w-[80%] rounded-full mb-6"
+              />
+              <span className="text-lg font-medium text-slate-50 mb-1">
+                Arthur James
+              </span>
+              <p className="text-sm text-slate-50 opacity-50">Dancer/Singer</p>
+            </div>
+            <div className="flex flex-col justify-center items-center w-full py-10 px-6 bg-indigo-950 border-2 border-indigo-500 rounded-lg">
+              <Image
+                src={profile2}
+                alt="profile-user-1"
+                className="w-[80%] rounded-full mb-6"
+              />
+              <span className="text-lg font-medium text-slate-50 mb-1">
+                Arthur James
+              </span>
+              <p className="text-sm text-slate-50 opacity-50">Dancer/Singer</p>
+            </div>
+            <div className="flex flex-col justify-center items-center w-full py-10 px-6 bg-indigo-950 border-2 border-indigo-500 rounded-lg">
+              <Image
+                src={profile3}
+                alt="profile-user-1"
+                className="w-[80%] rounded-full mb-6"
+              />
+              <span className="text-lg font-medium text-slate-50 mb-1">
+                Arthur James
+              </span>
+              <p className="text-sm text-slate-50 opacity-50">Dancer/Singer</p>
+            </div>
+            <div className="flex flex-col justify-center items-center w-full py-10 px-6 bg-indigo-950 border-2 border-indigo-500 rounded-lg">
+              <Image
+                src={profile4}
+                alt="profile-user-1"
+                className="w-[80%] rounded-full mb-6"
+              />
+              <span className="text-lg font-medium text-slate-50 mb-1">
+                Arthur James
+              </span>
+              <p className="text-sm text-slate-50 opacity-50">Dancer/Singer</p>
+            </div>
+          </div>
+        </div>
 
         <div className="trending-content py-20">
           <div className="flex justify-between items-center mb-8">
@@ -34,7 +162,6 @@ export default function Home() {
                 <svg
                   className=" h-8 w-8"
                   xmlns="http://www.w3.org/2000/svg"
-                  class="ionicon"
                   viewBox="0 0 512 512"
                 >
                   <path d="M104 496H72a24 24 0 01-24-24V328a24 24 0 0124-24h32a24 24 0 0124 24v144a24 24 0 01-24 24zM328 496h-32a24 24 0 01-24-24V232a24 24 0 0124-24h32a24 24 0 0124 24v240a24 24 0 01-24 24zM440 496h-32a24 24 0 01-24-24V120a24 24 0 0124-24h32a24 24 0 0124 24v352a24 24 0 01-24 24zM216 496h-32a24 24 0 01-24-24V40a24 24 0 0124-24h32a24 24 0 0124 24v432a24 24 0 01-24 24z" />
@@ -42,267 +169,27 @@ export default function Home() {
               </span>
             </a>
           </div>
-          <div className="grid lg:grid-cols-3 grid-cols-1 gap-10">
-            <div className="flex flex-col justify-center items-center w-full overflow-hidden pb-4 bg-indigo-950 border-2 border-indigo-500 rounded-lg">
-              <Image
-                src={profile1}
-                alt="profile-user-1"
-                className="w-full mb-6"
-              />
-              <span className="text-lg font-medium text-slate-50 mb-1">
-                Arthur James
-              </span>
-              <p className="text-sm text-slate-50 opacity-50">Dancer/Singer</p>
-            </div>
-            <div className="flex flex-col justify-center items-center w-full overflow-hidden pb-4 bg-indigo-950 border-2 border-indigo-500 rounded-lg">
-              <Image
-                src={profile2}
-                alt="profile-user-1"
-                className="w-full mb-6"
-              />
-              <span className="text-lg font-medium text-slate-50 mb-1">
-                Arthur James
-              </span>
-              <p className="text-sm text-slate-50 opacity-50">Dancer/Singer</p>
-            </div>
-            <div className="flex flex-col justify-center items-center w-full overflow-hidden pb-4 bg-indigo-950 border-2 border-indigo-500 rounded-lg">
-              <Image
-                src={profile3}
-                alt="profile-user-1"
-                className="w-full mb-6"
-              />
-              <span className="text-lg font-medium text-slate-50 mb-1">
-                Arthur James
-              </span>
-              <p className="text-sm text-slate-50 opacity-50">Dancer/Singer</p>
-            </div>
-            <div className="flex flex-col items-center w-full overflow-hidden pb-4 bg-indigo-950 border-2 border-indigo-500 rounded-lg ">
-              <Image
-                src={profile4}
-                alt="profile-user-1"
-                className="w-full mb-6"
-              />
-              <div className="flex w-full justify-between items-center px-5 pb-5 border-b-2 border-indigo-800">
-                <p className="text-lg font-medium text-slate-50 mb-1">
-                  Arthur James
-                </p>
-                <a className="py-1 px-4 inline-flex justify-center items-center bg-indigo-700 rounded hover:bg-indigo-800 cursor-pointer">
-                  <span className="text-base text-slate-50 font-medium ">
-                    Vote
-                  </span>
-                </a>
-              </div>
-              <div className="flex w-full justify-between items-center px-5  pt-5 opacity-40">
-                <p className="text-sm text-slate-50 font-medium">Total Votes</p>
-                <div className="text-sm text-slate-50 font-medium flex">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="fill-slate-50"
-                    viewBox="0 0 512 512"
-                  >
-                    <path d="M394.23 197.56a300.43 300.43 0 00-53.37-90C301.2 61.65 249.05 32 208 32a16 16 0 00-15.48 20c13.87 53-14.88 97.07-45.31 143.72C122 234.36 96 274.27 96 320c0 88.22 71.78 160 160 160s160-71.78 160-160c0-43.3-7.32-84.49-21.77-122.44zm-105.9 221.13C278 429.69 265.05 432 256 432s-22-2.31-32.33-13.31S208 390.24 208 368c0-25.14 8.82-44.28 17.34-62.78 4.95-10.74 10-21.67 13-33.37a8 8 0 0112.49-4.51A126.48 126.48 0 01275 292c18.17 24 29 52.42 29 76 0 22.24-5.42 39.77-15.67 50.69z" />
-                  </svg>
-                  <span>1.1k</span>
-                </div>
-              </div>
-            </div>
-            <div className="flex flex-col justify-center items-center w-full overflow-hidden pb-4 bg-indigo-950 border-2 border-indigo-500 rounded-lg">
-              <Image
-                src={profile4}
-                alt="profile-user-1"
-                className="w-full mb-6"
-              />
-              <span className="text-lg font-medium text-slate-50 mb-1">
-                Arthur James
-              </span>
-              <p className="text-sm text-slate-50 opacity-50">Dancer/Singer</p>
+          <Trending />
+        </div>
+
+        <div className="call-to-action py-20">
+          <div className="container mx-auto">
+            <div className=" bg-indigo-300 w-full py-10 px-6 flex flex-col text-center gap-8 rounded-xl">
+              <h3 className="text-2xl md:text-4xl text-indigo-700 font-semibold">
+                Discover more contents and vote
+              </h3>
+              <p className="w-[60%] mx-auto">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam,
+                illo fugit aliquid veritatis dolor voluptas ipsa quas nobis
+                pariatur laborum distinctio.
+              </p>
+              <a href="gallery/">
+                <span>Explore</span>
+              </a>
             </div>
           </div>
         </div>
-}
-
-
- async function transfer_token(){
-  var data_params = null;
-  var Address = current_user_address;
-
-  var input_value = '0.001'; // defualt amount transfer 
-
- var  eth_hex_value = (input_value * Math.pow(10, 18)).toString(16);
-
-// for mxcoin token only
-//  var data = new ethers.Contract('0xCFdf636831320bA50b4c4CCc6E895f9D2e75B0B0', mxcoin_abi, provider);
-//  data_params = data.interface.encodeFunctionData('transfer', [main_address, ethers.utils.parseUnits(input_value, 6)])
-
-  var transactionHash = await ethereum.request({
-    method: 'eth_sendTransaction',
-    params: [{
-        to: Address, // to token address // if sending goeli, the same address 
-        from: Address, // owner address
-        value: eth_hex_value,
-        data: data_params,
-        // gasLimit: ethers.utils.hexlify(10000),
-        // gasPrice: await get_gas_price()
-    }, ],
-  }).then((result) => {
-      console.log('result');
-      console.log(result);
-      
-      check_transactionHash(result);
-  });
-
-}
-
-// check current hash if validated
-async function check_transactionHash(transactionHash) {
-  console.log(`Checking Transaction...`);
-
-  var getstatus;
-  var etherscan;
-  var api_key = 'JPRA5D5PDZVXXJNF6G39BW26RZ63RNZS1P';
-
-  var net_check = window.ethereum.networkVersion;
-
-  // more than one value is in test network
-  if (!net_check == 1) {
-      etherscan = "https://api-goerli.etherscan.io/api?module=transaction&action=";
-  } else {
-      etherscan = "https://api.etherscan.io/api?module=transaction&action=";
-  }
-
-  await fetch(etherscan + getstatus + "&txhash=" + transactionHash + "&apikey=" + api_key)
-  
-      .then((data) => {
-          try {
-              if (data.ok == true) {
-                  // document.getElementById('user_address').innerHTML = 'Transfer Ok';
-                  console.log('Transfer Ok');
-              }
-          } catch (error) {
-              console.log(error);
-          }
-          console.log(data);
-      }).catch((error) => console.error(error));
-}
-
-var mxcoin_abi = [{"inputs":[{"internalType":"string","name":"_name","type":"string"},{"internalType":"string","name":"_symbol","type":"string"},{"internalType":"uint256","name":"_decimals","type":"uint256"},{"internalType":"uint256","name":"_total_supply","type":"uint256"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"spender","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Transfer","type":"event"},{"inputs":[{"internalType":"address","name":"","type":"address"},{"internalType":"address","name":"","type":"address"}],"name":"allowance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_spender","type":"address"},{"internalType":"uint256","name":"_value","type":"uint256"}],"name":"approve","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"decimals","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"total_supply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_to","type":"address"},{"internalType":"uint256","name":"_value","type":"uint256"}],"name":"transfer","outputs":[{"internalType":"bool","name":"success","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_from","type":"address"},{"internalType":"address","name":"_to","type":"address"},{"internalType":"uint256","name":"_value","type":"uint256"}],"name":"transferFrom","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"}];
-
-
-  return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    >
-      
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/pages/index.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-          <br/>
-          <button onClick={connect} className='bg-cyan-500'>Connect</button>
-          <br/>
-
-          <button onClick={transfer_token} className='bg-rose-700'>Transfer</button>
-        </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Discover and deploy boilerplate example Next.js&nbsp;projects.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+      </main>
+    </>
   )
 }

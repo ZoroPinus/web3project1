@@ -1,0 +1,34 @@
+{
+  "creators": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "imageUrl": "https://example.com/john-doe.jpg",
+      "totalVotes": 0
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "imageUrl": "https://example.com/jane-smith.jpg",
+      "totalVotes": 0
+    },
+    {
+      "id": 3,
+      "name": "Bob Johnson",
+      "imageUrl": "https://example.com/bob-johnson.jpg",
+      "totalVotes": 0
+    },
+    {
+      "id": 4,
+      "name": "Alice Williams",
+      "imageUrl": "https://example.com/alice-williams.jpg",
+      "totalVotes": 0
+    },
+    {
+      "id": 5,
+      "name": "Charlie Brown",
+      "imageUrl": "https://example.com/charlie-brown.jpg",
+      "totalVotes": 50
+    }
+  ]
+}
