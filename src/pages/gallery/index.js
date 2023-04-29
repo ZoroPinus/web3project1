@@ -60,8 +60,7 @@ export default function Home() {
                 Make your vote for your favorite creator!
               </h2>
               <p className="text-base sm:text-lg md:text-2xl font-medium text-slate-50 mx-auto ">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Adipisci officia, velit esse ab in.
+                Be a part of history and help choose the next big thing in music with our innovative and user-friendly system - start voting now!.
               </p>
             </div>
           </div>
