@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Trending from "../../components/ActingTrend.js";
+import Tabs from "../../components/Tabs.js";
 
 export default function Gallery() {
   const [animateHeader, setAnimateHeader] = useState(false);
@@ -57,7 +57,7 @@ export default function Gallery() {
           <div className="flex items-center justify-center">
             <div className="text-center">
               <h2 className="md:text-6xl text-4xl font-bold text-indigo-500 mb-4">
-                Make your vote for your favorite creator!
+                Make a vote for your favorite creator!
               </h2>
               <p className="text-base sm:text-lg md:text-2xl font-medium text-slate-50 mx-auto ">
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit.
@@ -87,7 +87,7 @@ export default function Gallery() {
               </span>
             </a>
           </div>
-          <Trending />
+          <Tabs />
         </div>
       </main>
     </>

@@ -17,9 +17,9 @@ export default function ComedyTrend() {
             <p className="text-lg font-medium text-slate-50 mb-1">
             Miss Earth: Beyond the Beauty
             </p>
-            <a className="py-1 px-4 inline-flex justify-center items-center bg-indigo-700 rounded hover:bg-indigo-800 cursor-pointer">
+             <button className="py-1 px-4 inline-flex justify-center items-center bg-indigo-700 rounded hover:bg-indigo-800 disabled:bg-slate-400" >
               <span className="text-base text-slate-50 font-medium ">Vote</span>
-            </a>
+            </button>
           </div>
           <span className="text-sm font-semibold text-slate-400 w-full inline-block px-5 pb-5 border-b-2 border-indigo-800">Duration: 16:01s</span>
           <div className="flex w-full justify-between items-center px-5  pt-5 opacity-40">
@@ -44,9 +44,9 @@ export default function ComedyTrend() {
             <p className="text-lg font-medium text-slate-50 mb-1">
             Dance Fusion
             </p>
-            <a className="py-1 px-4 inline-flex justify-center items-center bg-indigo-700 rounded hover:bg-indigo-800 cursor-pointer">
+             <button className="py-1 px-4 inline-flex justify-center items-center bg-indigo-700 rounded hover:bg-indigo-800 disabled:bg-slate-400" >
               <span className="text-base text-slate-50 font-medium ">Vote</span>
-            </a>
+            </button>
           </div>
           <span className="text-sm font-semibold text-slate-400 w-full inline-block px-5 pb-5 border-b-2 border-indigo-800">Duration: 16:01s</span>
           <div className="flex w-full justify-between items-center px-5  pt-5 opacity-40">
@@ -70,9 +70,9 @@ export default function ComedyTrend() {
             <p className="text-lg font-medium text-slate-50 mb-1">
               Comedy in Chaos
             </p>
-            <a className="py-1 px-4 inline-flex justify-center items-center bg-indigo-700 rounded hover:bg-indigo-800 cursor-pointer">
+             <button className="py-1 px-4 inline-flex justify-center items-center bg-indigo-700 rounded hover:bg-indigo-800 disabled:bg-slate-400" >
               <span className="text-base text-slate-50 font-medium ">Vote</span>
-            </a>
+            </button>
           </div>
           <span className="text-sm font-semibold text-slate-400 w-full inline-block px-5 pb-5 border-b-2 border-indigo-800">Duration: 16:01s</span>
           <div className="flex w-full justify-between items-center px-5  pt-5 opacity-40">
@@ -96,9 +96,9 @@ export default function ComedyTrend() {
             <p className="text-lg font-medium text-slate-50 mb-1">
               Unplugged and Unforgettable
             </p>
-            <a className="py-1 px-4 inline-flex justify-center items-center bg-indigo-700 rounded hover:bg-indigo-800 cursor-pointer">
+             <button className="py-1 px-4 inline-flex justify-center items-center bg-indigo-700 rounded hover:bg-indigo-800 disabled:bg-slate-400" >
               <span className="text-base text-slate-50 font-medium ">Vote</span>
-            </a>
+            </button>
           </div>
           <span className="text-sm font-semibold text-slate-400 w-full inline-block px-5 pb-5 border-b-2 border-indigo-800">Duration: 16:01s</span>
           <div className="flex w-full justify-between items-center px-5  pt-5 opacity-40">
@@ -122,9 +122,9 @@ export default function ComedyTrend() {
             <p className="text-lg font-medium text-slate-50 mb-1">
               Brushstrokes of Life
             </p>
-            <a className="py-1 px-4 inline-flex justify-center items-center bg-indigo-700 rounded hover:bg-indigo-800 cursor-pointer">
+             <button className="py-1 px-4 inline-flex justify-center items-center bg-indigo-700 rounded hover:bg-indigo-800 disabled:bg-slate-400" >
               <span className="text-base text-slate-50 font-medium ">Vote</span>
-            </a>
+            </button>
           </div>
           <span className="text-sm font-semibold text-slate-400 w-full inline-block px-5 pb-5 border-b-2 border-indigo-800">Duration: 16:01s</span>
           <div className="flex w-full justify-between items-center px-5  pt-5 opacity-40">
@@ -148,9 +148,9 @@ export default function ComedyTrend() {
             <p className="text-lg font-medium text-slate-50 mb-1 ">
               The Method Actor
             </p>
-            <a className="py-1 px-4 inline-flex justify-center items-cenpx-5ter bg-indigo-700 rounded hover:bg-indigo-800 cursor-pointer">
+            <button className="py-1 px-4 inline-flex justify-center items-center bg-indigo-700 rounded hover:bg-indigo-800 disabled:bg-slate-400" >
               <span className="text-base text-slate-50 font-medium ">Vote</span>
-            </a>
+            </button>
           </div>
           
           <span className="text-sm font-semibold text-slate-400 w-full inline-block px-5 pb-5 border-b-2 border-indigo-800">Duration: 16:01s</span>

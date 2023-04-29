@@ -9,7 +9,6 @@ import drawing from "../../public/images/drawing.jpg";
 
 export default function ActingTrend() {
   return (
-    
       <div className="grid lg:grid-cols-3 grid-cols-1 gap-10">
         <div className="flex flex-col items-center w-full overflow-hidden pb-4 bg-indigo-950 border-2 border-indigo-500 rounded-lg ">
           <Image src={model} alt="profile-user-1" className="w-full mb-6" />
@@ -18,7 +17,7 @@ export default function ActingTrend() {
             Stage and Screen
             </p>
 
-            {/* DISABLED BUTTON */}
+            {/* DISABLED */}
             {/* <button className="py-1 px-4 inline-flex justify-center items-center bg-indigo-700 rounded hover:bg-indigo-800 disabled:bg-slate-400" disabled>
               <span className="text-base text-slate-50 font-medium ">Vote</span>
             </button> */}
@@ -27,7 +26,7 @@ export default function ActingTrend() {
               <span className="text-base text-slate-50 font-medium ">Vote</span>
             </button>
           </div>
-          <span className="text-sm font-semibold text-slate-400 w-full inline-block px-5 pb-5 border-b-2 border-indigo-800">Duration: 16:01s</span>
+
           <div className="flex w-full justify-between items-center px-5  pt-5 opacity-40">
             <p className="text-sm text-slate-50 font-medium">#pageant</p>
             <div className="text-sm text-slate-50 font-medium flex">
@@ -54,7 +53,7 @@ export default function ActingTrend() {
               <span className="text-base text-slate-50 font-medium ">Vote</span>
             </button>
           </div>
-          <span className="text-sm font-semibold text-slate-400 w-full inline-block px-5 pb-5 border-b-2 border-indigo-800">Duration: 16:01s</span>
+
           <div className="flex w-full justify-between items-center px-5  pt-5 opacity-40">
             <p className="text-sm text-slate-50 font-medium">#dancing</p>
             <div className="text-sm text-slate-50 font-medium flex">
@@ -80,7 +79,7 @@ export default function ActingTrend() {
               <span className="text-base text-slate-50 font-medium ">Vote</span>
             </button>
           </div>
-          <span className="text-sm font-semibold text-slate-400 w-full inline-block px-5 pb-5 border-b-2 border-indigo-800">Duration: 16:01s</span>
+          
           <div className="flex w-full justify-between items-center px-5  pt-5 opacity-40">
             <p className="text-sm text-slate-50 font-medium">#standUpComedy</p>
             <div className="text-sm text-slate-50 font-medium flex">
@@ -106,7 +105,7 @@ export default function ActingTrend() {
               <span className="text-base text-slate-50 font-medium ">Vote</span>
             </button>
           </div>
-          <span className="text-sm font-semibold text-slate-400 w-full inline-block px-5 pb-5 border-b-2 border-indigo-800">Duration: 16:01s</span>
+
           <div className="flex w-full justify-between items-center px-5  pt-5 opacity-40">
             <p className="text-sm text-slate-50 font-medium">#singing</p>
             <div className="text-sm text-slate-50 font-medium flex">
@@ -132,7 +131,7 @@ export default function ActingTrend() {
               <span className="text-base text-slate-50 font-medium ">Vote</span>
             </button>
           </div>
-          <span className="text-sm font-semibold text-slate-400 w-full inline-block px-5 pb-5 border-b-2 border-indigo-800">Duration: 16:01s</span>
+
           <div className="flex w-full justify-between items-center px-5  pt-5 opacity-40">
             <p className="text-sm text-slate-50 font-medium">#painting</p>
             <div className="text-sm text-slate-50 font-medium flex">
@@ -159,7 +158,7 @@ export default function ActingTrend() {
             </button>
           </div>
           
-          <span className="text-sm font-semibold text-slate-400 w-full inline-block px-5 pb-5 border-b-2 border-indigo-800">Duration: 16:01s</span>
+
           <div className="flex w-full justify-between items-center px-5  pt-5 opacity-40">
             <p className="text-sm text-slate-50 font-medium">#acting</p>
             <div className="text-sm text-slate-50 font-medium flex">
