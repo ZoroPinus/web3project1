@@ -1,16 +1,12 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
-
 const inter = Inter({ subsets: ["latin"] });
 import { useState, useEffect } from "react";
-import Trending from "../../components/Trending.js";
+import Link from "next/link";
+import Tabs from "../../components/Tabs.js";
 
-export default function Home() {
+export default function Gallery() {
   const [animateHeader, setAnimateHeader] = useState(false);
-  
-  
-  
-
   useEffect(() => {
     const listener = () => {
       if (window.scrollY > 140) {
@@ -37,7 +33,7 @@ export default function Home() {
               </div>
               <ul className="nav-links flex gap-6">
                 <li className="text-md sm:text-base text-slate-50 hover:text-indigo-500">
-                  <a href="#hero">Home</a>
+                  <a href="../">Home</a>
                 </li>
                 <li className="text-md sm:text-base text-slate-50 hover:text-indigo-500">
                   <a href="gallery/">Gallery</a>
@@ -61,10 +57,11 @@ export default function Home() {
           <div className="flex items-center justify-center">
             <div className="text-center">
               <h2 className="md:text-6xl text-4xl font-bold text-indigo-500 mb-4">
-                Make your vote for your favorite creator!
+                Make a vote for your favorite creator!
               </h2>
               <p className="text-base sm:text-lg md:text-2xl font-medium text-slate-50 mx-auto ">
-                Be a part of history and help choose the next big thing in music with our innovative and user-friendly system - start voting now!.
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Adipisci officia, velit esse ab in.
               </p>
             </div>
           </div>
@@ -90,7 +87,7 @@ export default function Home() {
               </span>
             </a>
           </div>
-          <Trending />
+          <Tabs />
         </div>
       </main>
     </>
