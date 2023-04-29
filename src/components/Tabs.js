@@ -30,7 +30,7 @@ const Tabs = () => {
                 href="#link1"
                 role="tablist"
               >
-                Comedy
+                Acting
               </a>
             </li>
             <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
@@ -49,7 +49,7 @@ const Tabs = () => {
                 href="#link2"
                 role="tablist"
               >
-                Acting
+                Comedy
               </a>
             </li>
             <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
