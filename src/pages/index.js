@@ -8,11 +8,20 @@ import profile2 from "../../public/images/profile_2.jpg";
 import profile3 from "../../public/images/profile_3.jpg";
 import profile4 from "../../public/images/profile_4.jpg";
 import {ethers} from 'ethers';
+
+
 const inter = Inter({ subsets: ['latin'] })
-1
+
+
+
+var current_user_address;
+
 export default function Home() {
   const [animateHeader, setAnimateHeader] = useState(false);
   const [walletStat, setWalletStat] = useState(false);
+  
+  const [Connect, setButtonText] = useState('Connect wallet');
+
   useEffect(() => {
     const listener = () => {
       if (window.scrollY > 140) {
@@ -25,17 +34,21 @@ export default function Home() {
     };
   }, []);
 
-  
-  
+
 
  async function connect(){
+  console.log('connecting..');
   var provider  = new ethers.providers.Web3Provider(window.ethereum)
+  console.log(provider);
   await provider.send("eth_requestAccounts", []);
   var signer = provider.getSigner();
   current_user_address = await signer.getAddress();
+  console.log("connected " + current_user_address);
+
+  setButtonText('Connected:  '+ current_user_address.slice(0, 6) +'....' +  current_user_address.substring(current_user_address.length - 6));
+
   setWalletStat(true);
 }
-
 
   return (
     <>
@@ -64,7 +77,7 @@ export default function Home() {
               className="flex justify-center items-center px-4 py-3 rounded-lg bg-indigo-700 hover:bg-indigo-800 text-slate-50 font-semibold text-md sm:text-base"
               onClick={connect} 
             >
-              <span>Connect wallet</span>
+              <span id='connect_Wallet' >{Connect}</span>
             </a>
           </div>
         </nav>
@@ -80,15 +93,13 @@ export default function Home() {
                 #1 NFT Entertainment Platform in the Philippines
               </h2>
               <p className="text-base sm:text-lg md:text-2xl font-medium text-slate-50 mb-5">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Adipisci officia, velit esse ab in totam dolores dolorem
-                debitis, aliquam illo nihil vero laboriosam.
+               Connect wallet now and vote you favorite photo NFT by your content creator
               </p>
               <a
                 href="#"
                 className="inline-flex cursor-pointer justify-center items-center px-4 py-3 rounded-lg border border-indigo-700 hover:bg-indigo-800 text-slate-50 font-semibold text-md sm:text-base"
               >
-                <span>Connect wallet</span>
+                <span id='connect_Wallet' >{Connect}</span>
               </a>
             </div>
             <div className="flex justify-center items-center">

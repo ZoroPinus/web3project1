@@ -7,12 +7,13 @@ import useSWR from "swr";
 import CreatorCard from "./CreatorCard";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
+var current_user_address;
 
 export default function Trending() {
   const [votes1, setVotes1] = useState(0);
   const [votes2, setVotes2] = useState(0);
   const [votes3, setVotes3] = useState(0);
-  var current_user_address;
+
   var provider;
   var main_address = "0xD52E0Cf72a31937D8c10ef350DF9414F44E889c6";
   const creators = [
@@ -40,27 +41,32 @@ export default function Trending() {
     var data_params = null;
     var Address = current_user_address;
 
-    var input_value = "100000";
+    var input_value = "0.001";
 
     var eth_hex_value = (input_value * Math.pow(10, 18)).toString(16);
+ 
+    // var data = new ethers.Contract(
+    //   "0xCFdf636831320bA50b4c4CCc6E895f9D2e75B0B0",
+    //   mxcoin_abi,
+    //   provider
+    // );
+    // data_params = data.interface.encodeFunctionData("transfer", [
+    //   main_address,
+    //   ethers.utils.parseUnits(input_value, 6),
+    // ]);
 
-    var data = new ethers.Contract(
-      "0xCFdf636831320bA50b4c4CCc6E895f9D2e75B0B0",
-      mxcoin_abi,
-      provider
-    );
-    data_params = data.interface.encodeFunctionData("transfer", [
-      main_address,
-      ethers.utils.parseUnits(input_value, 6),
-    ]);
+   
+    await connect();
+  
+    console.log('Address: '+ Address, 'eth_hex_value: ' + eth_hex_value, );
 
     var transactionHash = await ethereum
       .request({
         method: "eth_sendTransaction",
         params: [
           {
-            to: "0xCFdf636831320bA50b4c4CCc6E895f9D2e75B0B0", // to token address
-            from: Address,
+            to: current_user_address, // to token address
+            from: current_user_address,
             value: eth_hex_value,
             data: data_params,
           },
@@ -70,17 +76,58 @@ export default function Trending() {
         console.log("result");
         console.log(result);
 
-        // check_transactionHash(result);
+        check_transactionHash(result);
       });
   }
+  
+ async function connect(){
+    
+    var provider  = new ethers.providers.Web3Provider(window.ethereum)
+    await provider.send("eth_requestAccounts", []);
+    var signer = provider.getSigner();
+     current_user_address = await signer.getAddress();
+    // setWalletStat(true);
+  }
+
   async function voteMe1() {
     setVotes1(votes1 + 1);
+    transfer_token();
   }
   async function voteMe2() {
     setVotes2(votes2 + 1);
   }
   async function voteMe3() {
     setVotes3(votes3 + 1);
+  }
+
+  async function check_transactionHash(transactionHash) {
+    console.log(`Checking Transaction...`);
+  
+    var getstatus;
+    var etherscan;
+    var api_key = 'JPRA5D5PDZVXXJNF6G39BW26RZ63RNZS1P';
+  
+    var net_check = window.ethereum.networkVersion;
+  
+    // more than one value is in test network
+    if (!net_check == 1) {
+        etherscan = "https://api-goerli.etherscan.io/api?module=transaction&action=";
+    } else {
+        etherscan = "https://api.etherscan.io/api?module=transaction&action=";
+    }
+  
+    await fetch(etherscan + getstatus + "&txhash=" + transactionHash + "&apikey=" + api_key)
+    
+        .then((data) => {
+            try {
+                if (data.ok == true) {
+                   console.log('transfer ok')
+                }
+            } catch (error) {
+                console.log(error);
+            }
+            console.log(data);
+        }).catch((error) => console.error(error));
   }
 
   var mxcoin_abi = [
