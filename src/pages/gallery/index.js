@@ -7,6 +7,10 @@ import Trending from "../../components/Trending.js";
 
 export default function Home() {
   const [animateHeader, setAnimateHeader] = useState(false);
+  
+  
+  
+
   useEffect(() => {
     const listener = () => {
       if (window.scrollY > 140) {

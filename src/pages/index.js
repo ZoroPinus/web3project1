@@ -27,6 +27,7 @@ export default function Home() {
 
   
   
+var current_user_address;
 
  async function connect(){
   var provider  = new ethers.providers.Web3Provider(window.ethereum)
