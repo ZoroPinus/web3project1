@@ -33,7 +33,7 @@ export default function Gallery() {
               </div>
               <ul className="nav-links flex gap-6">
                 <li className="text-md sm:text-base text-slate-50 hover:text-indigo-500">
-                  <a href="#hero">Home</a>
+                  <a href="../">Home</a>
                 </li>
                 <li className="text-md sm:text-base text-slate-50 hover:text-indigo-500">
                   <a href="gallery/">Gallery</a>

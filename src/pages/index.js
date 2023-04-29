@@ -9,6 +9,9 @@ import profile2 from "../../public/images/profile_2.jpg";
 import profile3 from "../../public/images/profile_3.jpg";
 import profile4 from "../../public/images/profile_4.jpg";
 import profile5 from "../../public/images/profile_5.jpg";
+import pbb from "../../public/images/pbb.png";
+import agt from "../../public/images/agt.jpg";
+import voicePh from "../../public/images/voice-ph.png";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,8 +33,8 @@ export default function Home() {
       <header
         className={`w-full px-10 fixed top-0 z-40 scroll-smooth ${
           animateHeader && " bg-[#1a1a56]"
-        }`} >
-        
+        }`}
+      >
         <nav className="py-5 px-8">
           <div className="container mx-auto flex justify-between items-center">
             <div className="flex items-center">
@@ -159,19 +162,78 @@ export default function Home() {
           <Trending />
         </div>
 
-        <div className="call-to-action py-20">
+        <div className="explore-events">
           <div className="container mx-auto">
-            <div className=" bg-indigo-300 w-full py-10 px-6 flex flex-col text-center gap-8 rounded-xl">
-              <h3 className="text-2xl md:text-4xl text-indigo-700 font-semibold">
+            <h3 className="text-2xl md:text-4xl text-slate-50  font-semibold mb-8">
+              Explore trending events
+            </h3>
+            <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-10">
+              <div className="relative rounded-md overflow-hidden ">
+                <p className="absolute top-[50%] translate-y-[-15%] left-[20%] h-full w-full text-slate-50 font-semibold text-xl z-10">The Voice Philippines</p>
+                <Image
+                  src={voicePh}
+                  alt="profile-user-1"
+                  className="w-full h-full blur-[2px]"
+                />
+                <a className="w-[50%] py-3 absolute bottom-6 left-0 right-0 inline-flex justify-center items-center border-2 border-indigo-500 mx-auto rounded-md bg-slate-50/10 hover:bg-indigo-500 cursor-pointer z-20">
+                  <span className="text-slate-50">View</span>
+                </a>
+              </div>
+              <div className="relative rounded-md overflow-hidden ">
+                <p className="absolute top-[50%] translate-y-[-15%] left-[20%] h-full w-full text-slate-50 font-semibold text-xl z-10">America's Got Talent</p>
+                <Image
+                  src={agt}
+                  alt="profile-user-1"
+                  className="w-full h-full blur-[2px]"
+                />
+                <a className="w-[50%] py-3 absolute bottom-6 left-0 right-0 inline-flex justify-center items-center border-2 border-indigo-500 mx-auto rounded-md bg-slate-50/10 hover:bg-indigo-500 cursor-pointer z-20">
+                  <span className="text-slate-50">View</span>
+                </a>
+              </div>
+              <div className="relative rounded-md overflow-hidden ">
+                <p className="absolute top-[50%] translate-y-[-15%] left-[20%] h-full w-full text-slate-50 font-semibold text-xl z-10">Pinoy Big Brothers</p>
+                <Image
+                  src={pbb}
+                  alt="profile-user-1"
+                  className="w-full h-full blur-[2px]"
+                />
+                <a className="w-[50%] py-3 absolute bottom-6 left-0 right-0 inline-flex justify-center items-center border-2 border-indigo-500 mx-auto rounded-md bg-slate-50/10 hover:bg-indigo-500 cursor-pointer z-20">
+                  <span className="text-slate-50">View</span>
+                </a>
+              </div>
+              <div className="relative rounded-md overflow-hidden ">
+                <p className="absolute top-[50%] translate-y-[-15%] left-[20%] h-full w-full text-slate-50 font-semibold text-xl z-10">Philippines Next Model</p>
+                <Image
+                  src={profile4}
+                  alt="profile-user-1"
+                  className="w-full h-full blur-[2px]"
+                />
+                <a className="w-[50%] py-3 absolute bottom-6 left-0 right-0 inline-flex justify-center items-center border-2 border-indigo-500 mx-auto rounded-md bg-slate-50/10 hover:bg-indigo-500 cursor-pointer z-20">
+                  <span className="text-slate-50">View</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="call-to-action py-20">
+          <div className="container mx-auo">
+            <div className=" bg-indigo-900 w-full py-10 px-6 flex flex-col text-center gap-8 rounded-xl">
+              <h3 className="text-2xl md:text-4xl text-slate-50 font-semibold">
                 Discover more contents and vote
               </h3>
-              <p className="w-[60%] mx-auto">
+              <p className="w-[60%] mx-auto text-slate-50">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam,
                 illo fugit aliquid veritatis dolor voluptas ipsa quas nobis
                 pariatur laborum distinctio.
               </p>
-              <a href="gallery/">
-                <span>Explore</span>
+              <a
+                href="gallery/"
+                className="inline-flex justify-center items-center py-2 px-4 bg-indigo-500"
+              >
+                <span className="text-slate-50 font-medium text-base">
+                  Explore
+                </span>
               </a>
             </div>
           </div>

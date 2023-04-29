@@ -9,14 +9,14 @@ export default function Trending() {
           <Image src={profile4} alt="profile-user-1" className="w-full mb-6" />
           <div className="flex w-full justify-between items-center px-5 pb-5 border-b-2 border-indigo-800">
             <p className="text-lg font-medium text-slate-50 mb-1">
-              Arthur James
+            Miss Earth: Beyond the Beauty
             </p>
             <a className="py-1 px-4 inline-flex justify-center items-center bg-indigo-700 rounded hover:bg-indigo-800 cursor-pointer">
               <span className="text-base text-slate-50 font-medium ">Vote</span>
             </a>
           </div>
           <div className="flex w-full justify-between items-center px-5  pt-5 opacity-40">
-            <p className="text-sm text-slate-50 font-medium">Total Votes</p>
+            <p className="text-sm text-slate-50 font-medium">#pageant</p>
             <div className="text-sm text-slate-50 font-medium flex">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -35,14 +35,14 @@ export default function Trending() {
           <Image src={profile4} alt="profile-user-1" className="w-full mb-6" />
           <div className="flex w-full justify-between items-center px-5 pb-5 border-b-2 border-indigo-800">
             <p className="text-lg font-medium text-slate-50 mb-1">
-              Arthur James
+            Dance Fusion
             </p>
             <a className="py-1 px-4 inline-flex justify-center items-center bg-indigo-700 rounded hover:bg-indigo-800 cursor-pointer">
               <span className="text-base text-slate-50 font-medium ">Vote</span>
             </a>
           </div>
           <div className="flex w-full justify-between items-center px-5  pt-5 opacity-40">
-            <p className="text-sm text-slate-50 font-medium">Total Votes</p>
+            <p className="text-sm text-slate-50 font-medium">#dancing</p>
             <div className="text-sm text-slate-50 font-medium flex">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -60,14 +60,14 @@ export default function Trending() {
           <Image src={profile4} alt="profile-user-1" className="w-full mb-6" />
           <div className="flex w-full justify-between items-center px-5 pb-5 border-b-2 border-indigo-800">
             <p className="text-lg font-medium text-slate-50 mb-1">
-              Arthur James
+              Comedy in Chaos
             </p>
             <a className="py-1 px-4 inline-flex justify-center items-center bg-indigo-700 rounded hover:bg-indigo-800 cursor-pointer">
               <span className="text-base text-slate-50 font-medium ">Vote</span>
             </a>
           </div>
           <div className="flex w-full justify-between items-center px-5  pt-5 opacity-40">
-            <p className="text-sm text-slate-50 font-medium">Total Votes</p>
+            <p className="text-sm text-slate-50 font-medium">#standUpComedy</p>
             <div className="text-sm text-slate-50 font-medium flex">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -85,14 +85,14 @@ export default function Trending() {
           <Image src={profile4} alt="profile-user-1" className="w-full mb-6" />
           <div className="flex w-full justify-between items-center px-5 pb-5 border-b-2 border-indigo-800">
             <p className="text-lg font-medium text-slate-50 mb-1">
-              Arthur James
+              Unplugged and Unforgettable
             </p>
             <a className="py-1 px-4 inline-flex justify-center items-center bg-indigo-700 rounded hover:bg-indigo-800 cursor-pointer">
               <span className="text-base text-slate-50 font-medium ">Vote</span>
             </a>
           </div>
           <div className="flex w-full justify-between items-center px-5  pt-5 opacity-40">
-            <p className="text-sm text-slate-50 font-medium">Total Votes</p>
+            <p className="text-sm text-slate-50 font-medium">#singing</p>
             <div className="text-sm text-slate-50 font-medium flex">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -110,14 +110,14 @@ export default function Trending() {
           <Image src={profile4} alt="profile-user-1" className="w-full mb-6" />
           <div className="flex w-full justify-between items-center px-5 pb-5 border-b-2 border-indigo-800">
             <p className="text-lg font-medium text-slate-50 mb-1">
-              Arthur James
+              Brushstrokes of Life
             </p>
             <a className="py-1 px-4 inline-flex justify-center items-center bg-indigo-700 rounded hover:bg-indigo-800 cursor-pointer">
               <span className="text-base text-slate-50 font-medium ">Vote</span>
             </a>
           </div>
           <div className="flex w-full justify-between items-center px-5  pt-5 opacity-40">
-            <p className="text-sm text-slate-50 font-medium">Total Votes</p>
+            <p className="text-sm text-slate-50 font-medium">#acting</p>
             <div className="text-sm text-slate-50 font-medium flex">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -135,14 +135,14 @@ export default function Trending() {
           <Image src={profile4} alt="profile-user-1" className="w-full mb-6" />
           <div className="flex w-full justify-between items-center px-5 pb-5 border-b-2 border-indigo-800">
             <p className="text-lg font-medium text-slate-50 mb-1">
-              Arthur James
+              The Method Actor
             </p>
             <a className="py-1 px-4 inline-flex justify-center items-center bg-indigo-700 rounded hover:bg-indigo-800 cursor-pointer">
               <span className="text-base text-slate-50 font-medium ">Vote</span>
             </a>
           </div>
           <div className="flex w-full justify-between items-center px-5  pt-5 opacity-40">
-            <p className="text-sm text-slate-50 font-medium">Total Votes</p>
+            <p className="text-sm text-slate-50 font-medium">#grammysAwards</p>
             <div className="text-sm text-slate-50 font-medium flex">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
