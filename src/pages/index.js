@@ -2,13 +2,14 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Trending from "../components/Trending.js";
+import Tabs from "../components/Tabs.js";
 import nftImg from "../../public/images/nft-landing.jpg";
 import profile1 from "../../public/images/profile_1.jpg";
 import profile2 from "../../public/images/profile_2.jpg";
 import profile3 from "../../public/images/profile_3.jpg";
 import profile4 from "../../public/images/profile_4.jpg";
 import profile5 from "../../public/images/profile_5.jpg";
+
 import pbb from "../../public/images/pbb.png";
 import agt from "../../public/images/agt.jpg";
 import voicePh from "../../public/images/voice-ph.png";
@@ -89,7 +90,7 @@ export default function Home() {
 
         <div className="top-creators py-20">
           <h3 className="text-2xl md:text-4xl text-slate-50 mb-8 font-semibold">
-            Top Creators
+            Top Participants
           </h3>
           <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-10 relative after:absolute after:flex after:justify-center after:items-center after:top-0 after:left-0">
             <div className="flex flex-col justify-center items-center w-full py-10 px-6 bg-indigo-950 border-2 border-indigo-500 rounded-lg">
@@ -159,7 +160,7 @@ export default function Home() {
               </span>
             </a>
           </div>
-          <Trending />
+          <Tabs />
         </div>
 
         <div className="explore-events">
@@ -169,7 +170,10 @@ export default function Home() {
             </h3>
             <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-10">
               <div className="relative rounded-md overflow-hidden ">
-                <p className="absolute top-[50%] translate-y-[-15%] left-[20%] h-full w-full text-slate-50 font-semibold text-xl z-10">The Voice Philippines</p>
+                <div className="absolute top-0 bottom-0 h-full w-full flex justify-center items-center text-slate-50 font-semibold text-xl z-10 bg-neutral-900/70">
+
+                  <p className="-translate-y-[30px]">The Voice Philippines</p>
+                </div>
                 <Image
                   src={voicePh}
                   alt="profile-user-1"
@@ -180,7 +184,9 @@ export default function Home() {
                 </a>
               </div>
               <div className="relative rounded-md overflow-hidden ">
-                <p className="absolute top-[50%] translate-y-[-15%] left-[20%] h-full w-full text-slate-50 font-semibold text-xl z-10">America's Got Talent</p>
+                <div className="absolute top-0 bottom-0 h-full w-full flex justify-center items-center text-slate-50 font-semibold text-xl z-10 bg-neutral-900/70">
+                  <p className="-translate-y-[30px]">America's Got Talent</p>
+                </div>
                 <Image
                   src={agt}
                   alt="profile-user-1"
@@ -191,7 +197,10 @@ export default function Home() {
                 </a>
               </div>
               <div className="relative rounded-md overflow-hidden ">
-                <p className="absolute top-[50%] translate-y-[-15%] left-[20%] h-full w-full text-slate-50 font-semibold text-xl z-10">Pinoy Big Brothers</p>
+                <div className="absolute top-0 bottom-0 h-full w-full flex justify-center items-center text-slate-50 font-semibold text-xl z-10 bg-neutral-900/70">
+
+                  <p className="-translate-y-[30px]">Pinoy Big Brothers</p>
+                </div>
                 <Image
                   src={pbb}
                   alt="profile-user-1"
@@ -202,7 +211,10 @@ export default function Home() {
                 </a>
               </div>
               <div className="relative rounded-md overflow-hidden ">
-                <p className="absolute top-[50%] translate-y-[-15%] left-[20%] h-full w-full text-slate-50 font-semibold text-xl z-10">Philippines Next Model</p>
+                <div className="absolute top-0 bottom-0 h-full w-full flex justify-center items-center text-slate-50 font-semibold text-xl z-10 bg-neutral-900/70">
+
+                  <p className="-translate-y-[30px]">Philippines Next Model</p>
+                </div>
                 <Image
                   src={profile4}
                   alt="profile-user-1"
@@ -228,8 +240,8 @@ export default function Home() {
                 pariatur laborum distinctio.
               </p>
               <a
-                href="gallery/"
-                className="inline-flex justify-center items-center py-2 px-4 bg-indigo-500"
+                href="#"
+                className="w-[15%] inline-flex mx-auto justify-center items-center py-2 px-4 bg-indigo-500 rounded-md border border-indigo-500 hover:border-slate-50 hover:bg-transparent"
               >
                 <span className="text-slate-50 font-medium text-base">
                   Explore

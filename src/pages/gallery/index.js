@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Trending from "../../components/Trending.js";
+import Trending from "../../components/ActingTrend.js";
 
 export default function Gallery() {
   const [animateHeader, setAnimateHeader] = useState(false);

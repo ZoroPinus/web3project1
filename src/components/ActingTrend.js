@@ -1,13 +1,19 @@
 import Image from "next/image";
 import profile4 from "../../public/images/profile_4.jpg";
+import model from "../../public/images/model-walk.jpg";
+import dance from "../../public/images/dance.jpg";
+import comedy from "../../public/images/comedy.jpg";
+import singing from "../../public/images/singing.jpg";
+import acting from "../../public/images/acting.jpg";
+import drawing from "../../public/images/drawing.jpg";
 
-export default function Trending() {
+export default function ActingTrend() {
   return (
     
       <div className="grid lg:grid-cols-3 grid-cols-1 gap-10">
         <div className="flex flex-col items-center w-full overflow-hidden pb-4 bg-indigo-950 border-2 border-indigo-500 rounded-lg ">
-          <Image src={profile4} alt="profile-user-1" className="w-full mb-6" />
-          <div className="flex w-full justify-between items-center px-5 pb-5 border-b-2 border-indigo-800">
+          <Image src={model} alt="profile-user-1" className="w-full mb-6" />
+          <div className="flex w-full justify-between items-center px-5 ">
             <p className="text-lg font-medium text-slate-50 mb-1">
             Miss Earth: Beyond the Beauty
             </p>
@@ -15,6 +21,7 @@ export default function Trending() {
               <span className="text-base text-slate-50 font-medium ">Vote</span>
             </a>
           </div>
+          <span className="text-sm font-semibold text-slate-400 w-full inline-block px-5 pb-5 border-b-2 border-indigo-800">Duration: 16:01s</span>
           <div className="flex w-full justify-between items-center px-5  pt-5 opacity-40">
             <p className="text-sm text-slate-50 font-medium">#pageant</p>
             <div className="text-sm text-slate-50 font-medium flex">
@@ -32,8 +39,8 @@ export default function Trending() {
         </div>
 
         <div className="flex flex-col items-center w-full overflow-hidden pb-4 bg-indigo-950 border-2 border-indigo-500 rounded-lg ">
-          <Image src={profile4} alt="profile-user-1" className="w-full mb-6" />
-          <div className="flex w-full justify-between items-center px-5 pb-5 border-b-2 border-indigo-800">
+          <Image src={dance} alt="profile-user-1" className="w-full mb-6" />
+          <div className="flex w-full justify-between items-center px-5 ">
             <p className="text-lg font-medium text-slate-50 mb-1">
             Dance Fusion
             </p>
@@ -41,6 +48,7 @@ export default function Trending() {
               <span className="text-base text-slate-50 font-medium ">Vote</span>
             </a>
           </div>
+          <span className="text-sm font-semibold text-slate-400 w-full inline-block px-5 pb-5 border-b-2 border-indigo-800">Duration: 16:01s</span>
           <div className="flex w-full justify-between items-center px-5  pt-5 opacity-40">
             <p className="text-sm text-slate-50 font-medium">#dancing</p>
             <div className="text-sm text-slate-50 font-medium flex">
@@ -57,8 +65,8 @@ export default function Trending() {
         </div>
 
         <div className="flex flex-col items-center w-full overflow-hidden pb-4 bg-indigo-950 border-2 border-indigo-500 rounded-lg ">
-          <Image src={profile4} alt="profile-user-1" className="w-full mb-6" />
-          <div className="flex w-full justify-between items-center px-5 pb-5 border-b-2 border-indigo-800">
+          <Image src={comedy} alt="profile-user-1" className="w-full mb-6" />
+          <div className="flex w-full justify-between items-center px-5 ">
             <p className="text-lg font-medium text-slate-50 mb-1">
               Comedy in Chaos
             </p>
@@ -66,6 +74,7 @@ export default function Trending() {
               <span className="text-base text-slate-50 font-medium ">Vote</span>
             </a>
           </div>
+          <span className="text-sm font-semibold text-slate-400 w-full inline-block px-5 pb-5 border-b-2 border-indigo-800">Duration: 16:01s</span>
           <div className="flex w-full justify-between items-center px-5  pt-5 opacity-40">
             <p className="text-sm text-slate-50 font-medium">#standUpComedy</p>
             <div className="text-sm text-slate-50 font-medium flex">
@@ -82,8 +91,8 @@ export default function Trending() {
         </div>
 
         <div className="flex flex-col items-center w-full overflow-hidden pb-4 bg-indigo-950 border-2 border-indigo-500 rounded-lg ">
-          <Image src={profile4} alt="profile-user-1" className="w-full mb-6" />
-          <div className="flex w-full justify-between items-center px-5 pb-5 border-b-2 border-indigo-800">
+          <Image src={singing} alt="profile-user-1" className="w-full mb-6" />
+          <div className="flex w-full justify-between items-center px-5 ">
             <p className="text-lg font-medium text-slate-50 mb-1">
               Unplugged and Unforgettable
             </p>
@@ -91,6 +100,7 @@ export default function Trending() {
               <span className="text-base text-slate-50 font-medium ">Vote</span>
             </a>
           </div>
+          <span className="text-sm font-semibold text-slate-400 w-full inline-block px-5 pb-5 border-b-2 border-indigo-800">Duration: 16:01s</span>
           <div className="flex w-full justify-between items-center px-5  pt-5 opacity-40">
             <p className="text-sm text-slate-50 font-medium">#singing</p>
             <div className="text-sm text-slate-50 font-medium flex">
@@ -107,8 +117,8 @@ export default function Trending() {
         </div>
 
         <div className="flex flex-col items-center w-full overflow-hidden pb-4 bg-indigo-950 border-2 border-indigo-500 rounded-lg ">
-          <Image src={profile4} alt="profile-user-1" className="w-full mb-6" />
-          <div className="flex w-full justify-between items-center px-5 pb-5 border-b-2 border-indigo-800">
+          <Image src={drawing} alt="profile-user-1" className="w-full mb-6" />
+          <div className="flex w-full justify-between items-center px-5 ">
             <p className="text-lg font-medium text-slate-50 mb-1">
               Brushstrokes of Life
             </p>
@@ -116,8 +126,9 @@ export default function Trending() {
               <span className="text-base text-slate-50 font-medium ">Vote</span>
             </a>
           </div>
+          <span className="text-sm font-semibold text-slate-400 w-full inline-block px-5 pb-5 border-b-2 border-indigo-800">Duration: 16:01s</span>
           <div className="flex w-full justify-between items-center px-5  pt-5 opacity-40">
-            <p className="text-sm text-slate-50 font-medium">#acting</p>
+            <p className="text-sm text-slate-50 font-medium">#painting</p>
             <div className="text-sm text-slate-50 font-medium flex">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -132,17 +143,19 @@ export default function Trending() {
         </div>
 
         <div className="flex flex-col items-center w-full overflow-hidden pb-4 bg-indigo-950 border-2 border-indigo-500 rounded-lg ">
-          <Image src={profile4} alt="profile-user-1" className="w-full mb-6" />
-          <div className="flex w-full justify-between items-center px-5 pb-5 border-b-2 border-indigo-800">
-            <p className="text-lg font-medium text-slate-50 mb-1">
+          <Image src={acting} alt="profile-user-1" className="w-full mb-6" />
+          <div className="flex w-full justify-between items-center px-5">
+            <p className="text-lg font-medium text-slate-50 mb-1 ">
               The Method Actor
             </p>
-            <a className="py-1 px-4 inline-flex justify-center items-center bg-indigo-700 rounded hover:bg-indigo-800 cursor-pointer">
+            <a className="py-1 px-4 inline-flex justify-center items-cenpx-5ter bg-indigo-700 rounded hover:bg-indigo-800 cursor-pointer">
               <span className="text-base text-slate-50 font-medium ">Vote</span>
             </a>
           </div>
+          
+          <span className="text-sm font-semibold text-slate-400 w-full inline-block px-5 pb-5 border-b-2 border-indigo-800">Duration: 16:01s</span>
           <div className="flex w-full justify-between items-center px-5  pt-5 opacity-40">
-            <p className="text-sm text-slate-50 font-medium">#grammysAwards</p>
+            <p className="text-sm text-slate-50 font-medium">#acting</p>
             <div className="text-sm text-slate-50 font-medium flex">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
