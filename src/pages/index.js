@@ -19,7 +19,7 @@ var current_user_address;
 export default function Home() {
   const [animateHeader, setAnimateHeader] = useState(false);
   const [walletStat, setWalletStat] = useState(false);
-  
+
   const [Connect, setButtonText] = useState('Connect wallet');
 
   useEffect(() => {
@@ -93,7 +93,7 @@ export default function Home() {
                 #1 NFT Entertainment Platform in the Philippines
               </h2>
               <p className="text-base sm:text-lg md:text-2xl font-medium text-slate-50 mb-5">
-               Connect wallet now and vote you favorite photo NFT by your content creator
+               Connect wallet now and vote your favorite photo NFT by your content creator.
               </p>
               <a
                 href="#"
@@ -190,9 +190,7 @@ export default function Home() {
                 Discover more contents and vote
               </h3>
               <p className="w-[60%] mx-auto">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam,
-                illo fugit aliquid veritatis dolor voluptas ipsa quas nobis
-                pariatur laborum distinctio.
+              Experience the future of digital voting with our innovative platform designed to make voting for your favorite content creators fast, easy, and secure.
               </p>
               <a href="gallery/">
                 <span>Explore</span>
