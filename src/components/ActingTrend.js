@@ -6,16 +6,23 @@ import comedy from "../../public/images/comedy.jpg";
 import singing from "../../public/images/singing.jpg";
 import acting from "../../public/images/acting.jpg";
 import drawing from "../../public/images/drawing.jpg";
+import ModalWinner from "./ModalWinner";
+import profile5 from "../../public/images/profile_5.jpg";
 import { ethers } from "ethers";
 import { useState, useEffect } from "react";
 
 export default function ActingTrend() {
   const [votes1, setVotes1] = useState(0);
+  const [user1, setUser1] = useState({name: 'Cam Asutra', talent: 'Stage and Scree', code:'#pageant'});
+  const [user2, setUser2] = useState({name: 'Terek D. Great', talent: 'Dance Fusion', code:'#dancing'});
+  const [user3, setUser3] = useState({name: 'Nicco San', talent: 'Comedy in Chaos', code:'#comedy'});
   const [votes2, setVotes2] = useState(0);
   const [votes3, setVotes3] = useState(0);
-  const [voteState, setVoteStat] = useState(true);
-  const [votingTime, setVotingTime] = useState("");
+  const [voteState, setVoteStat] = useState(false);
   const [hideClock, setHideClock] = useState(false);
+  const [winner, setWinner] = useState({});
+  const [showWinner, setShowWinner] = useState(false);
+  const [totalVotes, setTotalVotes] = useState("");
   var current_user_address;
 
   var provider;
@@ -40,7 +47,6 @@ export default function ActingTrend() {
       total: "votes",
     },
   ];
-
   async function transfer_token(vote_amount) {
     var provider = new ethers.providers.Web3Provider(window.ethereum);
     await provider.send("eth_requestAccounts", []);
@@ -52,7 +58,7 @@ export default function ActingTrend() {
     var input_value = "0.001";
 
     var eth_hex_value = (input_value * Math.pow(10, 18)).toString(16);
- 
+
     // var data = new ethers.Contract(
     //   "0xCFdf636831320bA50b4c4CCc6E895f9D2e75B0B0",
     //   mxcoin_abi,
@@ -92,58 +98,80 @@ export default function ActingTrend() {
         check_transactionHash(result);
       });
   }
-  
- async function connect(){
-    
-    var provider  = new ethers.providers.Web3Provider(window.ethereum)
+
+  async function connect() {
+    var provider = new ethers.providers.Web3Provider(window.ethereum);
     await provider.send("eth_requestAccounts", []);
     var signer = provider.getSigner();
-     current_user_address = await signer.getAddress();
+    current_user_address = await signer.getAddress();
     // setWalletStat(true);
   }
 
   async function voteMe1() {
+    transfer_token("0.001");
     setVotes1(votes1 + 1);
   }
   async function voteMe2() {
+    transfer_token("0.001");
     setVotes2(votes2 + 1);
   }
   async function voteMe3() {
+    transfer_token("0.001");
     setVotes3(votes3 + 1);
   }
-  function getWinner(user1, user2, user3) {
-    const winner = Math.max(user1, user2, user3);
-    return winner;
-  }
+  function getWinner(votes1, votes2, votes3) {
+    setUser1({totalVotes:votes1}) ;
+    setUser2({totalVotes:votes2}) ;
+    setUser3({totalVotes:votes3}) ;
+    if(user1.totalVotes > user2.totalVotes || user1.totalVotes > user3.totalVotes){
+      setWinner(user1);
+    }else if(user2.totalVotes > user3.totalVotes || user2.totalVotes > user1.totalVotes){
+      setWinner(user2);
+    }else if(user3.totalVotes > user2.totalVotes || user3.totalVotes > user1.totalVotes){
+      setWinner(user3);
+    }else{
+      console.log("error")
+    }
+    setShowWinner(true);
 
+  }
+console.log(winner)
   async function check_transactionHash(transactionHash) {
     console.log(`Checking Transaction...`);
-  
+
     var getstatus;
     var etherscan;
-    var api_key = 'JPRA5D5PDZVXXJNF6G39BW26RZ63RNZS1P';
-  
+    var api_key = "JPRA5D5PDZVXXJNF6G39BW26RZ63RNZS1P";
+
     var net_check = window.ethereum.networkVersion;
-  
+
     // more than one value is in test network
     if (!net_check == 1) {
-        etherscan = "https://api-goerli.etherscan.io/api?module=transaction&action=";
+      etherscan =
+        "https://api-goerli.etherscan.io/api?module=transaction&action=";
     } else {
-        etherscan = "https://api.etherscan.io/api?module=transaction&action=";
+      etherscan = "https://api.etherscan.io/api?module=transaction&action=";
     }
-  
-    await fetch(etherscan + getstatus + "&txhash=" + transactionHash + "&apikey=" + api_key)
-    
-        .then((data) => {
-            try {
-                if (data.ok == true) {
-                   console.log('transfer ok')
-                }
-            } catch (error) {
-                console.log(error);
-            }
-            console.log(data);
-        }).catch((error) => console.error(error));
+
+    await fetch(
+      etherscan +
+        getstatus +
+        "&txhash=" +
+        transactionHash +
+        "&apikey=" +
+        api_key
+    )
+      .then((data) => {
+        try {
+          if (data.ok == true) {
+            console.log("transfer ok");
+          }
+        } catch (error) {
+          console.log(error);
+        }
+        console.log(data);
+      })
+      .catch((error) => console.error(error));
   }
 
   var mxcoin_abi = [
@@ -284,9 +312,9 @@ export default function ActingTrend() {
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
-
+  // zorovel
   useEffect(() => {
-    const target = new Date("4/29/2023 18:10:59");
+    const target = new Date("4/29/2023 18:00:40");
 
     const interval = setInterval(() => {
       const now = new Date();
@@ -307,7 +335,7 @@ export default function ActingTrend() {
       setSeconds(s);
 
       if (d <= 0 && h <= 0 && m <= 0 && s <= 0) {
-        getWinner();
+        getWinner(votes1, votes2, votes3);
         setVoteStat(false);
         setHideClock(true);
       }
@@ -316,28 +344,83 @@ export default function ActingTrend() {
     return () => clearInterval(interval);
   }, []);
 
+  
 
   return (
+    <div>
+      {showWinner ? 
+      <>
+      <div className="h-screen bg-neutral-700/60 fixed flex justify-center items-center w-full z-50 overflow-hidden">
+        <div className="flex flex-col m-auto justify-center items-center bg-slate-50 p-6 w-[40%] rounded-lg">
+            <h3 className="text-2xl font-semibold mb-3 text-indigo-500">Congratulations to {winner.name}!</h3>
+            <Image 
+                src={profile5}
+                className="rounded-full mb-4 w-[40%] mx-auto"
+            />
+            <p className="text-neutral-800 text-base mb-3">Your content - <span className="font-bold text-indigo-500">{winner.talent}</span> - won the Rising Star event!</p>
+            <p className="text-neutral-800 text-sm">Total votes accumulated: <span className="font-bold text-indigo-500">{winner.totalVotes}</span> </p>
+        </div>
+      </div>
+      </>:
+      <></>
+    }
+      <div className="flex justify-between items-center">
+        <div>
+          <h3 className="text-2xl md:text-4xl text-slate-50 mb-3 font-semibold">
+            Vote for your favorite
+          </h3>
+          <p className="text-base text-slate-50 mb-12">
+            Cast your vote for the actor who has captured your heart and
+            imagination with their outstanding performances!
+          </p>
+        </div>
+        {hideClock ? (
+          <></>
+        ) : (
+          <>
+            <span className="text-slate-50 text-xl font-semibold">
+              Duration: {hours}H:{minutes}m:{seconds}s
+            </span>
+          </>
+        )}
+      </div>
+
       <div className="grid lg:grid-cols-3 grid-cols-1 gap-10">
         <div className="flex flex-col items-center w-full overflow-hidden pb-4 bg-indigo-950 border-2 border-indigo-500 rounded-lg ">
           <Image src={model} alt="profile-user-1" className="w-full mb-6" />
           <div className="flex w-full justify-between items-center px-5 ">
             <p className="text-lg font-medium text-slate-50 mb-1">
-            Stage and Screen
+              {user1.talent}
             </p>
 
-            {/* DISABLED */}
-            {/* <button className="py-1 px-4 inline-flex justify-center items-center bg-indigo-700 rounded hover:bg-indigo-800 disabled:bg-slate-400" disabled>
-              <span className="text-base text-slate-50 font-medium ">Vote</span>
-            </button> */}
-
-            <button onClick={()=>voteMe1()} className="py-1 px-4 inline-flex justify-center items-center bg-indigo-700 rounded hover:bg-indigo-800 disabled:bg-slate-400" >
-              <span className="text-base text-slate-50 font-medium ">Vote</span>
-            </button>
+            {voteState ? (
+              <>
+                {/* DISABLED */}
+                <button
+                  className="py-1 px-4 inline-flex justify-center items-center bg-indigo-700 rounded hover:bg-indigo-800 disabled:bg-slate-400"
+                  disabled
+                >
+                  <span className="text-base text-slate-50 font-medium ">
+                    Vote
+                  </span>
+                </button>
+              </>
+            ) : (
+              <>
+                <button
+                  onClick={() => voteMe1()}
+                  className="py-1 px-4 inline-flex justify-center items-center bg-indigo-700 rounded hover:bg-indigo-800 disabled:bg-slate-400"
+                >
+                  <span className="text-base text-slate-50 font-medium ">
+                    Vote
+                  </span>
+                </button>
+              </>
+            )}
           </div>
 
           <div className="flex w-full justify-between items-center px-5  pt-5 opacity-40">
-            <p className="text-sm text-slate-50 font-medium">#pageant</p>
+            <p className="text-sm text-slate-50 font-medium">{user1.code}</p>
             <div className="text-sm text-slate-50 font-medium flex">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -356,15 +439,36 @@ export default function ActingTrend() {
           <Image src={dance} alt="profile-user-1" className="w-full mb-6" />
           <div className="flex w-full justify-between items-center px-5 ">
             <p className="text-lg font-medium text-slate-50 mb-1">
-            Dance Fusion
+              {user2.talent}
             </p>
-            <button onClick={()=>voteMe1()} className="py-1 px-4 inline-flex justify-center items-center bg-indigo-700 rounded hover:bg-indigo-800 disabled:bg-indigo-700" >
-              <span className="text-base text-slate-50 font-medium ">Vote</span>
-            </button>
+            {voteState ? (
+              <>
+                {/* DISABLED */}
+                <button
+                  className="py-1 px-4 inline-flex justify-center items-center bg-indigo-700 rounded hover:bg-indigo-800 disabled:bg-slate-400"
+                  disabled
+                >
+                  <span className="text-base text-slate-50 font-medium ">
+                    Vote
+                  </span>
+                </button>
+              </>
+            ) : (
+              <>
+                <button
+                  onClick={() => voteMe2()}
+                  className="py-1 px-4 inline-flex justify-center items-center bg-indigo-700 rounded hover:bg-indigo-800 disabled:bg-slate-400"
+                >
+                  <span className="text-base text-slate-50 font-medium ">
+                    Vote
+                  </span>
+                </button>
+              </>
+            )}
           </div>
 
           <div className="flex w-full justify-between items-center px-5  pt-5 opacity-40">
-            <p className="text-sm text-slate-50 font-medium">#dancing</p>
+            <p className="text-sm text-slate-50 font-medium">{user2.code}</p>
             <div className="text-sm text-slate-50 font-medium flex">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -382,15 +486,36 @@ export default function ActingTrend() {
           <Image src={comedy} alt="profile-user-1" className="w-full mb-6" />
           <div className="flex w-full justify-between items-center px-5 ">
             <p className="text-lg font-medium text-slate-50 mb-1">
-              Comedy in Chaos
+              {user3.talent}
             </p>
-            <button onClick={()=>voteMe2()} className="py-1 px-4 inline-flex justify-center items-center bg-indigo-700 rounded hover:bg-indigo-800 disabled:bg-slate-400" >
-              <span className="text-base text-slate-50 font-medium ">Vote</span>
-            </button>
+            {voteState ? (
+              <>
+                {/* DISABLED */}
+                <button
+                  className="py-1 px-4 inline-flex justify-center items-center bg-indigo-700 rounded hover:bg-indigo-800 disabled:bg-slate-400"
+                  disabled
+                >
+                  <span className="text-base text-slate-50 font-medium ">
+                    Vote
+                  </span>
+                </button>
+              </>
+            ) : (
+              <>
+                <button
+                  onClick={() => voteMe3()}
+                  className="py-1 px-4 inline-flex justify-center items-center bg-indigo-700 rounded hover:bg-indigo-800 disabled:bg-slate-400"
+                >
+                  <span className="text-base text-slate-50 font-medium ">
+                    Vote
+                  </span>
+                </button>
+              </>
+            )}
           </div>
-          
+
           <div className="flex w-full justify-between items-center px-5  pt-5 opacity-40">
-            <p className="text-sm text-slate-50 font-medium">#standUpComedy</p>
+            <p className="text-sm text-slate-50 font-medium">{user3.code}</p>
             <div className="text-sm text-slate-50 font-medium flex">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -404,13 +529,16 @@ export default function ActingTrend() {
           </div>
         </div>
 
-        <div className="flex flex-col items-center w-full overflow-hidden pb-4 bg-indigo-950 border-2 border-indigo-500 rounded-lg ">
+        {/* <div className="flex flex-col items-center w-full overflow-hidden pb-4 bg-indigo-950 border-2 border-indigo-500 rounded-lg ">
           <Image src={singing} alt="profile-user-1" className="w-full mb-6" />
           <div className="flex w-full justify-between items-center px-5 ">
             <p className="text-lg font-medium text-slate-50 mb-1">
               Unplugged and Unforgettable
             </p>
-            <button onClick={()=>voteMe3()} className="py-1 px-4 inline-flex justify-center items-center bg-indigo-700 rounded hover:bg-indigo-800 disabled:bg-slate-400" >
+            <button
+              onClick={() => voteMe3()}
+              className="py-1 px-4 inline-flex justify-center items-center bg-indigo-700 rounded hover:bg-indigo-800 disabled:bg-slate-400"
+            >
               <span className="text-base text-slate-50 font-medium ">Vote</span>
             </button>
           </div>
@@ -436,7 +564,7 @@ export default function ActingTrend() {
             <p className="text-lg font-medium text-slate-50 mb-1">
               Brushstrokes of Life
             </p>
-            <button className="py-1 px-4 inline-flex justify-center items-center bg-indigo-700 rounded hover:bg-indigo-800 disabled:bg-slate-400" >
+            <button className="py-1 px-4 inline-flex justify-center items-center bg-indigo-700 rounded hover:bg-indigo-800 disabled:bg-slate-400">
               <span className="text-base text-slate-50 font-medium ">Vote</span>
             </button>
           </div>
@@ -462,11 +590,10 @@ export default function ActingTrend() {
             <p className="text-lg font-medium text-slate-50 mb-1 ">
               The Method Actor
             </p>
-            <button className="py-1 px-4 inline-flex justify-center items-center bg-indigo-700 rounded hover:bg-indigo-800 disabled:bg-slate-400" >
+            <button className="py-1 px-4 inline-flex justify-center items-center bg-indigo-700 rounded hover:bg-indigo-800 disabled:bg-slate-400">
               <span className="text-base text-slate-50 font-medium ">Vote</span>
             </button>
           </div>
-          
 
           <div className="flex w-full justify-between items-center px-5  pt-5 opacity-40">
             <p className="text-sm text-slate-50 font-medium">#acting</p>
@@ -481,7 +608,7 @@ export default function ActingTrend() {
               <span>1.1k</span>
             </div>
           </div>
-        </div>
+        </div> */}
 
         <div className=" col-span-full flex justify-center">
           <a
@@ -492,5 +619,6 @@ export default function ActingTrend() {
           </a>
         </div>
       </div>
+    </div>
   );
 }

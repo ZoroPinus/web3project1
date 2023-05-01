@@ -21,7 +21,6 @@ export default function actingContent() {
   }, []);
   return (
     <>
-      <ModalWinner />
       <header
         className={`w-full px-10 fixed top-0 z-40 scroll-smooth ${
           animateHeader && " bg-[#1a1a56]"
@@ -55,18 +54,6 @@ export default function actingContent() {
         className={`flex min-h-screen flex-col items-center justify-between p-24 scroll-smooth py-40 ${inter.className}`}
       >
         <div className="container mx-auto">
-          <div className="flex justify-between items-center">
-            <div>
-              <h3 className="text-2xl md:text-4xl text-slate-50 mb-3 font-semibold">
-                Vote for your favorite
-              </h3>
-              <p className="text-base text-slate-50 mb-12">
-                Cast your vote for the actor who has captured your heart and
-                imagination with their outstanding performances!
-              </p>
-            </div>
-            <span className="text-slate-50 text-xl font-semibold">Duration: 16H:01s</span>
-          </div>
           <ActingTrend />
         </div>
       </main>

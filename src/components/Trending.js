@@ -15,7 +15,6 @@ export default function Trending() {
   const [votes2, setVotes2] = useState(0);
   const [votes3, setVotes3] = useState(0);
   const [voteState, setVoteStat] = useState(true);
-  const [votingTime, setVotingTime] = useState("");
   const [hideClock, setHideClock] = useState(false);
   var current_user_address;
 
